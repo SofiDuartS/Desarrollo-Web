@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/estilos.css">
+</head>
+<body>
+    <h1 align="center"  style="color: blue">Formulario</h1>
+    <br> <br>
+    <center>
+        <form name="fabulas" action="submitform.html" method="post">
+            <label for="name"> Texto: </label>
+            <input type="text" name="nombreFabula" id="name" required placeholder="Ingrese un texto"><br><br>
+
+            <label for="pass"> Contraseña: </label>
+            <input type="password" name="pass" id="pass" required placeholder="Ingrese su contraseña"><br><br>
+
+            <label for="options1"> Opciones (solo una): </label>
+            <input type="radio" name="options1" checked>Opt1
+            <input type="radio" name="options1">Opt2
+            <input type="radio" name="options1">Opt3 <br><br>
+
+            <label for="options2"> Opciones (todas las que quiera): </label>
+            <input type="checkbox" name="options2" id="opctions2" value="valorParaBackEnd1" checked> Opt1
+            <input type="checkbox" name="options2" id="opctions2" value="valorParaBackEnd2"> Opt2
+            <input type="checkbox" name="options2" id="opctions2" value="valorParaBackEnd3"> Opt3 <br><br>
+
+            <!-- Otra forma de hacer opción múltiple -->
+             <label for="options3"> Opciones (todas las que quiera 2.0): </label>
+             <input type="checkbox" id="opt1" name="opt1" checked>
+             <label for="opt1">Opt1</label>
+             <input type="checkbox" id="opt2" name="opt1">
+             <label for="opt2">Opt2</label>
+             <input type="checkbox" id="opt3" name="opt1">
+             <label for="opt3">Opt3</label> <br><br>
+
+             <label for="desplegable">Menu desplegable </label>
+             <select name="desplegable">
+                <option selected value="0">Elige una opcion</option>
+                <option value="1">Opcion1</option>
+                <option value="2">Opcion2</option>
+                <option value="3">Opcion3</option>
+             </select><br><br>
+
+             <label for="desplegableGroup">Menu desplegable (pero ahora agrupado)</label>
+             <select name="desplegableGroup">
+                <option  selected value="0">Elige una opcion</option>
+                <optgroup label="Grupo1">
+                    <option value="1">Opcion1 Grupo1</option>
+                    <option value="2">Opcion1 Grupo1</option>
+                </optgroup>
+                <optgroup label="Grupo2">
+                    <option value="3">Opcion1 Grupo2</option>
+                    <option value="4">Opcion2 Grupo2</option>
+                </optgroup>
+             </select><br><br>
+
+             <input type="hidden" name="datoOculto">
+             <label for="archivo">Archivo: </label>
+             <input type="file"> <br><br>
+
+             <label for="textarea">Text Area</label>
+             <textarea name="textarea" rows="3" cols="30"></textarea><br><br>
+
+             <input type="submit" value="Enviar">
+             <input type="reset" value="Cancelar">
+        </form>
+    </center>
+    
+</body>
+</html>

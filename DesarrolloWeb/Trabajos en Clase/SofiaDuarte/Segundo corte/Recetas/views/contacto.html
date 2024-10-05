@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body background="../assets/img/fondopostres.jpg">
+    <h1>Contáctanos</h1>
+    <p>Llene la siguiente información.</p>
+    <form action="responseContacto.html">
+        <label for="nombre">Nombre</label>
+        <input type="text" placeholder="Nombre completo">
+        <br>
+        <label for="email">Correo Electrónico</label>
+        <input type="email" placeholder="e.g. correo@dominio.com">
+        <br><br>
+        <label for="contact">Motivo de contacto</label>
+        <select name="contact">
+            <option selected value="0">Elige una opcion</option>
+            <option value="1">Corrección de receta</option>
+            <option value="2">Duda sobre receta</option>
+            <option value="3">Sugerencia para receta</option>
+            <option value="4">Otro</option>
+        </select><br><br>
+        <label for="msg">Mensaje</label>
+        <textarea name="msg" id="" placeholder="Escriba su mensaje aquí"></textarea>
+        <br><br>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Cancelar">
+    </form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.cajita{
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to left, purple, pink);
+    box-shadow: 15px 15px 25px 1px black; /* offset-x | offset-y | blur-radius | spread-radius | color */
+}
+
+h1{
+    text-shadow: 5px 5px 5px purple; /*vaina más fea JAJAJA*/
+}
+
+#rollocanela{
+    height: 200px;
+    width: auto;
+    margin: 25px;
+    border-radius: 50%;
+    border: 4px solid black;
+}
+
+.postre{
+    width: 90%;
+    height: fit-content;
+    min-height: 350px;
+    margin: 50px auto;
+    padding: 50px;
+    background: linear-gradient(rgb(240, 104, 228), rgb(245, 197, 225));
+    box-shadow: 10px 10px 5px 1px rgb(90, 71, 71);
+}
+
+.postre img{
+    height: 300px;
+    width: auto;
+    border: 15px solid white;
+    border-radius: 50%;
+    float: left;
+    margin: auto 50px;
+    margin-left: 0px;
+}
+
+.postre h1{
+    color: white;
+    text-shadow: 5px 5px 5px rgb(73, 11, 78);
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+.postre p{
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
