@@ -10,9 +10,10 @@ body {
     font-weight: 400;
     font-style: normal;
     width: 1440px;
+    height: 1465px;
 }
 
-.header {
+header {
     background-color: #D90921;
     display: flex;
     justify-content: space-between;
@@ -26,6 +27,7 @@ body {
     text-align: left;
     margin-right: 50px;
 }
+
 .menu span {
     display: block; 
     width: 33px;
@@ -66,4 +68,76 @@ body {
     height: 60px;
     background-color: white;
     border-radius: 50%;  
+}
+.container {
+    display: flex;
+    justify-content: center; 
+    height: 100vh;
+    position: relative;
+    top: 164px;
+}
+
+.login {
+    background-color: rgb(240, 240, 240);
+    border-radius: 30px;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 20px;
+    margin-top: 70px;
+    margin-left: 20px;
+    width: 772px;
+    height: 980px;
+    display: flex; /* Make .login a flex container */
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+
+}
+
+.login img {
+    align-self: center;
+    height: 300px;
+
+}
+
+.login form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+
+}
+
+.login label {
+    display: block;
+    margin-bottom: 5px;
+    color: black; /* Change label color to black for better readability */
+}
+
+.login input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.login button {
+
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #D90921;
+    color: white;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background-color: #0056b3;
 }
