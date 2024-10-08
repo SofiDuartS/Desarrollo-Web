@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+@import url(../css/estilos.css);
+
+:root{
+    --UR_Rojo: #d90921;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cajita{
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to left, purple, pink);
+    box-shadow: 15px 15px 25px 1px black; /* offset-x | offset-y | blur-radius | spread-radius | color */
+}
+
+.titulo h1{
+    text-shadow: 5px 5px 5px purple;
+    animation: movertexto 2s linear 3s;
+}
+
+.titulo img{
+    height: auto;
+    width: 150px;
+    margin: 0 auto;
+    animation: moverimagen 2s linear;
+}
+
+@keyframes moverimagen {
+    0%{transform: translateX(0px);}
+    50%{transform: translateX(250px);}
+    100%{transform: translateX(0px);}
+}
+
+@keyframes movertexto {
+    0%{transform: translateY(0px);}
+    50%{transform: translateY(200px);}
+    100%{transform: translateY(0px);}
+}
+
+.postre{
+    width: 800px;
+    height: fit-content;
+    min-height: 200px;
+    margin: 50px auto;
+    padding: 50px;
+    background: linear-gradient(rgb(240, 104, 228), rgb(245, 197, 225));
+    box-shadow: 10px 10px 5px 1px rgb(90, 71, 71);
+}
+
+.postre img{
+    height: 150px;
+    width: auto;
+    border: 10px solid white;
+    border-radius: 50%;
+    float: left;
+    margin: auto 50px;
+    margin-left: 0px;
+    transform: rotate(0deg);
+    transition: transform 2s linear 0.5s;
+}
+
+.postre img:hover{
+    transform: rotate(-30deg);
+    transition: transform 2s linear 0.5s;
+}
+
+.postre h1{
+    color: white;
+    text-shadow: 5px 5px 5px rgb(73, 11, 78);
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+.postre p{
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+.button{
+    width: 80px;
+    height: 30px;
+    margin: 0 auto;
+    background-color: var(--UR_Rojo);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease-out;
+}
+
+.button a{
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+.button:hover{
+   background-color: blue;
+}
