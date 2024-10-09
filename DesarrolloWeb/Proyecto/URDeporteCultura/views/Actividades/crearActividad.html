@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/botones.css">
     <link rel="stylesheet" href="../../assets/css/crearActividad.css">
     <title>UR Deporte y Cultura | Crear Actividad</title>
 </head>
@@ -30,7 +31,11 @@
                 <div class="formContent">
                     <div class="formImagen">
                         <input type="file" id="imagenActividad">
-                        <label for="imagenActividad">Elegir imagen</label>
+                        <div class="button" id="botonBlanco">
+                            <a href="">
+                                <p>Elegir imagen</p>
+                            </a>
+                        </div>
                     </div>
                     <div class="formCampos">
                         <div class="formText">
@@ -60,9 +65,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="formButtons">
-                    <input type="submit" class="button"  id="buttonEnviar" value="Guardar">
-                    <input type="reset" class="button" id="buttonCancelar" value="Cancelar">
+                <div class="formButtonsContainer">
+                    <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
+                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
                 </div>
             </form>
      

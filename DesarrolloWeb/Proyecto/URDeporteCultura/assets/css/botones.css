@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=League+Spartan:wght@100..900&display=swap');
+
+html {
+    font-size: 60%;
+  }
+
+:root{
+    --UR---Rojo: #d90921;
+    --UR---Azul: #3100A0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BOTONES DE NAVEGACIÓN */
+.button{
+    display: flex;
+    min-height: 3.25rem;
+    height: fit-content;
+    width: 11rem;
+    margin: 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: none;
+
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.button a{
+    text-decoration: none;
+    padding: 0.7875rem 1.3125rem;
+    color: #FFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.625rem;
+}
+
+.button p{
+    text-align: center;
+    color: #FFF;
+}
+
+.button a:hover{
+    text-decoration: underline;
+}
+
+#botonRojo{
+    background-color: var(--UR---Rojo);
+    transition: background-color 0.5s ease-out;
+}
+
+#botonRojo:hover{
+    background-color: #9f0819;
+}
+
+#botonAzul{
+    background-color: var(--UR---Azul);
+    transition: background-color 0.5s ease-out;
+}
+
+#botonAzul:hover{
+    background-color: #21016b;
+}
+
+#botonBlanco{
+    background-color: #ffffff00;
+    width: fit-content;
+    margin: 0;
+}
+
+#botonBlanco a, #botonBlanco p{
+    color: var(--UR---Rojo);
+    transition: all 0.5s ease-out;
+}
+
+#botonBlanco a:hover, #botonBlanco p:hover{
+    color: var(--UR---Azul);
+}
+
+/* BOTONES DE FORMULARIOS */
+.formButtonsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.125rem;
+    width: 100%;
+}
+
+.formButton{
+    display: flex;
+    height: 3.25rem;
+    width: 10rem;
+    padding: 0.1875rem 1.3125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: none;
+
+    color: #FFF;
+    /* leading-trim: both; */
+    /* text-edge: cap; */
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.formButton:hover{
+    text-decoration: underline;
+}
+
+#formButtonAzul{
+    background-color: var(--UR---Azul);
+    transition: background-color 0.5s ease-out;
+}
+
+#formButtonAzul:hover{
+    background-color: #21016b;
+    cursor: pointer;
+}
+
+#formButtonRojo{
+    background-color: var(--UR---Rojo);
+    transition: background-color 0.5s ease-out;
+}
+
+#formButtonRojo:hover{
+    background-color: #9f0819;
+    cursor: pointer;
+}
