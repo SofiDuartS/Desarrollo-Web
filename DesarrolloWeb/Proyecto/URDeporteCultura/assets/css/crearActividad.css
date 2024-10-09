@@ -68,8 +68,8 @@ header {
     align-items: center;
     display: flex;
     align-items: center;
-    position: absolute;
-    left: 100rem;
+    position: relative;
+    left: 0rem;
 }
 
 .user span {
@@ -201,40 +201,4 @@ header {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-
-.formButtons{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3.125rem;
-}
-
-.button{
-    display: flex;
-    height: 3.25rem;
-    width: 10rem;
-    padding: 0.1875rem 1.3125rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    border-radius: 0.625rem;
-    border: none;
-
-    color: #FFF;
-    /* leading-trim: both; */
-    /* text-edge: cap; */
-    font-family: "League Spartan", sans-serif;
-    font-size: 1.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-#buttonEnviar{
-    background: var(--UR---Azul);   
-}
-
-#buttonCancelar{
-    background: var(--UR---Rojo);
 }
