@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/botones.css">
+    <link rel="stylesheet" href="../../assets/css/crearActividad.css">
+    <title>UR Deporte y Cultura | Crear Actividad</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="../../assets/img/logo.png">
+        </div>
+
+        <div class="user">
+            <span>Usuario 123</span>
+            <div class="user-circle"></div>
+        </div>
+    </header>
+
+     <div class="mainContainer">
+        <div class="centeringContainer">
+            <h1 class="tituloSeccion">Crear nueva actividad</h1>
+            <form action="">
+                <div class="formContent">
+                    <div class="formImagen">
+                        <input type="file" id="imagenActividad">
+                        <div class="button" id="botonBlanco">
+                            <a href="">
+                                <p>Elegir imagen</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="formCampos">
+                        <div class="formText">
+                            <label for="nombreActividad">Nombre de la actividad</label><br>
+                            <input type="text" id="nombreActividad" required placeholder="Nombre de la actividad">
+                        </div>
+                        <div class="formText" id="formTextDesplegable">
+                            <label for="grupoActividad">Grupo que participa</label><br>
+                            <select id="grupoActividad" required>
+                                <option selected value="0">Grupo que participa</option>
+                                <option value="natacion">Natación</option>
+                                <option value="ultimate">Ultimate</option>
+                                <option value="rugby">Rugby</option>
+                            </select>
+                        </div>
+                        <div class="formText" id="formFecha">
+                            <label for="fechaActividad">Fecha de la actividad</label><br>
+                            <input type="date" id="fechaActividad" required placeholder="Fecha de la actividad">
+                        </div>
+                        <div class="formText" id="formLugar">
+                            <label for="lugarActividad">Lugar de la actividad</label><br>
+                            <input type="text" id="lugarActividad" placeholder="Lugar de la actividad">
+                        </div>
+                        <div class="formText">
+                            <label for="resultadoActividad">Resultado de la actividad</label><br>
+                            <input type="text" id="resultadoActividad"  placeholder="Resultado de la actividad">
+                        </div>
+                    </div>
+                </div>
+                <div class="formButtonsContainer">
+                    <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
+                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
+                </div>
+            </form>
+     
+        </div>
+    </div>
+</body>
+</html>
