@@ -4,12 +4,26 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 60%;
+  }
+
+
 body {
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    
 
+}
+
+.main {
+    
+
+    padding-bottom: 12.25rem;
+
+    gap: 10.25rem;
 }
 
 header {
@@ -152,6 +166,7 @@ header {
 .login a{
     color:#D90921;
     text-decoration: none;
+    font-size: 184%;
 }
 
 .login button:hover {
