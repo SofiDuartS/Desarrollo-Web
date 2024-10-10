@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR Deporte y Cultura | Crear Grupo </title>
+    <link rel="stylesheet" href="../../assets/css/crearGrupoEsp.css">
+    <link rel="stylesheet" href="../../assets/css/botones.css">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">
+            <img src="../../assets/img/logoHorizontalBlanco.png">
+        </div>
+
+        <div class="user">
+            <span>Usuario 123</span>
+            <div class="user-circle"></div>
+        </div>
+    </header>
+
+     <div class="contenidoPrincipal">
+        <div class="elementosCentrados">
+            <h1 class="tituloSeccion">Crear Nuevo Grupo Institucional</h1>
+            <form action="">
+                <div class="formContent">
+                    <div class="formImagen">
+                        <input type="file" id="imagenGrupo">
+                        <label for="imagenGrupo">Elegir Imagen</label>
+                    </div>
+                    <div class="formCampos">
+                        <div class="formText">
+                            <label for="nombreGrupoIns">Nombre del Grupo Institucional</label><br>
+                            <input type="text" id="nombreGrupoIns" required="" placeholder="Nombre del Grupo Institucional">
+                        </div>
+                        <div class="formText" id="formTextDesplegable">
+                            <label for="categoriaGrupo">Categoria</label><br>
+                            <select id="categoriaGrupo" required="">
+                                <option selected="" value="0">Categoria</option>
+                                <option value="natacion">Mixto</option>
+                                <option value="ultimate">Masculino</option>
+                                <option value="rugby">Femenino</option>
+                                <option value="ultimate">Individual</option>
+                                <option value="rugby">Duo</option>
+                                <option value="rugby">Unica</option>
+                                <option value="rugby">Cultural</option>
+                                <option value="rugby">Artistico</option>
+                            </select>
+                        </div>
+                        <div class="formText" id="formFecha">
+                            <label for="diaPracticas">Dias de Practica</label><br>
+                            <input type="date" id="diaPracticas" required="" placeholder="Dias de las Practicas"> 
+                        </div>
+                        <div class="formText" id="formLugar">
+                            <label for="lugarPracticas">Lugar de las Practicas</label><br>
+                            <input type="text" id="lugarPracticas" placeholder="Lugar de las Practicas">
+                        </div>
+                        <div class="formText">
+                            <label for="resultadoActividad">Integrantes</label><br>
+                            <input type="text" id="resultadoActividad" placeholder="Aqui se mostraran los integrantes">
+                        </div>
+                    </div>
+                </div>
+                <div class="formButtonsContainer">
+                    <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
+                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
+                </div>
+            </form>
+     
+        </div>
+    </div>
+
+</body></html>
