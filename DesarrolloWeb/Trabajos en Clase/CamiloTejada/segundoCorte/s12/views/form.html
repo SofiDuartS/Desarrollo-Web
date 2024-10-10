@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <h1 align="center" style="color:rgb(53, 117, 180)">Formulario</h1>
+    <br>
+    <form name="form" action="enviado.html" method="post" target="_blank">
+        <label for="form" id="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre">
+        <br><br>
+        <label for="form" type="password" name="clave" id="clave">Contraseña:</label>
+        <input type="password" name="clave" id="clave">
+        <br><br>
+        <label for="typeform" type="radio">Ingrese el tipo:</label>
+        <input type="radio" checked name="tipo" value="1">Administrador
+        <input type="radio" name="tipo" value="2">Usuario
+        <br><br>
+        <label for="permisos" type="checkbox">Seleccione los permisos:</label>
+        <input type="checkbox" name="permisos" id="permisos" value="1">Crear <!-- value= valor a enviar al backend, debe ser el mismo de la BD --> 
+        <input type="checkbox" name="permisos" id="permisos" value="2">Leer
+        <input type="checkbox" name="permisos" id="permisos" value="3">Actualizar
+        <input type="checkbox" name="permisos" id="permisos" value="4">Eliminar
+        <br><br>
+        <label for="selecccionar">Seleccione una opción:</label>
+        
+        <select name="ciudad" value="0" id="selecccionar">
+            <option value="0">Seleccione</option>
+            <option value="1">Bogota</option>
+            <option value="2">Medellin</option>
+            <option value="3">Cali</option>
+            <optgroup>
+                <option value="4">Barranquilla</option>
+                <option value="5">Cartagena</option>
+            </optgroup>
+        </select>
+
+        <br><br>
+        <input type="hidden">
+        <label for="archivo">Subir archivo:</label>
+        <input type="file" name="archivo" id="archivo">
+        <br><br>
+        <label for="fecha">Observaciones:</label>
+        <textarea name="" id="" rows="4" cols="30"></textarea>
+        <br><br>
+        <input type="submit" value="Enviar">
+        <input type="reset" name="" id="">
+
+
+    </form>
+</body>
+</html>

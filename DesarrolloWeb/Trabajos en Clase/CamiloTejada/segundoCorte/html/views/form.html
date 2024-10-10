@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactanos - La Hamburguesería</title>
+
+</head>
+<body style="background-color:powderblue">
+    <h1 align="center">Contactanos</h1>
+    <br>
+    <form action="/submit" method="post">
+        <label for="first-name">Nombre:</label>
+        <br>
+        <input type="text" id="first-name" name="first-name" required>
+        <br><br>
+        <label for="last-name">Apellido:</label>
+        <br>
+        <input type="text" id="last-name" name="last-name" required>
+        <br><br>
+        <label for="email">Correo:</label>
+        <br>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="phone">Teléfono:</label>
+        <br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]+" required>
+        <br><br>
+        <label for="date">Fecha:</label>
+        <br>
+        <input type="date" id="date" name="date" required>
+        <br><br>
+        <label for="subject">Tipo de requerimiento:</label><br>
+        <select id="subject" name="subject" required>
+            <option value="">Elija una opción</option>
+            <option value="inquiry">Reserva</option>
+            <option value="feedback">Queja</option>
+            <option value="support">Felicitación</option>
+        </select>
+        <br><br>
+        <label for="message">Mensaje:</label>
+        <br><br>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <br>
+
+        <input type="reset" name="" id="">
+        <input type="submit" value="Enviar">
+        
+    </form>
+</body>
+</html>

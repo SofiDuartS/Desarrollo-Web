@@ -1,0 +1,22 @@
+body {
+    width: 1024px;
+    height: 2000px;
+    
+}
+
+table {
+    margin: 10px;
+    padding: 20px;
+    width: 1024px;
+    height: 500px;
+    background-color: rgb(74, 158, 134);
+    color: white;
+    border-style: dashed;
+    border-color: yellow;
+    border-width: 5px;
+}
+
+span {
+    font-style: u;
+    color: yellow;
+}
