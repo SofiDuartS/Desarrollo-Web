@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/botones.css">
-    <link rel="stylesheet" href="../../assets/css/crearActividad.css">
+    <link rel="stylesheet" href="../../assets/css/modUsuario.css">
     <title>UR Deporte y Cultura | Modificar Usuario</title>
 </head>
 <body>
@@ -30,31 +30,32 @@
             <form action="">
                 <div class="formContent">
                     <div class="formImagen">
-                        <input type="file" id="imagenActividad">
-                        <div class="button" id="botonBlanco">
-                            <a href="">
-                                <p>Subir imagen</p>
-                            </a>
+                        <div class="square"></div>
+                        <div class="formImagen">
+                            <input type="file" id="imagenActividad" style="display: none;">
+                            <label for="imagenActividad" id="customUploadText">
+                                <p>Elegir imagen</p>
+                            </label>
                         </div>
                     </div>
                     <div class="formCampos">
                         <div class="formText">
-                            <label for="nombreUsuario">Nombre</label><br>
+                            <label for="nombreUsuario"></label><br>
                             <input type="text" id="nombreUsuario" required placeholder="Nombre">
                         </div>
                         <div class="formText">
-                            <label for="apellidoUsuario">Apellido</label><br>
+                            <label for="apellidoUsuario"></label><br>
                             <input type="text" id="apellidoUsuario" required placeholder="Apellido">
                         </div>
                         <div class="formText">
-                            <label for="apellidoUsuario">Correo Institucional</label><br>
-                            <input type="text" id="apellidoUsuario" required placeholder="usuario@urosario.edu.co">
+                            <label for="correoUsuario"> </label><br>
+                            <input type="text" id="correoUsuario" required placeholder="Correo Institucional">
                         </div>
           
       
                         <div class="formText">
-                            <label for="identidad">Id</label><br>
-                            <input type="text" id="identidad"  placeholder="Id">
+                            <label for="identidad"></label><br>
+                            <input type="text" id="identidad" required placeholder="ID">
                         </div>
                     </div>
                 </div>
