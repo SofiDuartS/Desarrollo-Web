@@ -1,0 +1,12 @@
+img {
+    transition: transform 20s;
+}
+
+img:hover {
+    transform: translate(500px);
+}
+
+body:hover {
+    transform: translateY(-25px);
+    transition: transform 2s linear 1s;
+}

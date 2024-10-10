@@ -1,0 +1,45 @@
+* {
+    font-family: "Gowun Batang", serif;
+}
+
+body {
+
+    
+
+    text-align: center;
+}
+
+nav {
+    padding: 40px 10px;
+    text-align: center;
+    background-color: rgb(171, 11, 11);
+
+}
+.menu {
+    list-style-type: none;
+    padding: 5px;
+    margin-left: 1px;
+    display: inline;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: inline;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.horario li{
+    list-style-type: none;
+}
+
+td {
+    padding-right: 20px;
+}
+
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(186, 186, 186);
+}
