@@ -148,7 +148,8 @@ header {
 }
 
 .login a{
-    color:#D90921
+    color:#D90921;
+    text-decoration: none;
 }
 
 .login button:hover {
