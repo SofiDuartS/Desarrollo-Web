@@ -149,7 +149,21 @@ header {
     border-radius: 0.5rem;
 }
 
-.formImagen label{
+.square{
+    width: 21.875rem;
+    height: 21.875rem;
+    background-color: #B9B9B9;
+    border-radius: 1.5rem;
+}
+
+.formImagen {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Add some space between elements */
+}
+
+#customUploadText {
+    cursor: pointer;
     color: var(--UR---Rojo);
     /* leading-trim: both;
     text-edge: cap; */
