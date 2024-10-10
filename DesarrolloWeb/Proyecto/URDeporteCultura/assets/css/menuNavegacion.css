@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=League+Spartan:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #d90921; /* Color Rojo Universidad del Rosario */
+    padding: 15px;
+}
+
+.menu {
+    text-align: left;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.menu span {
+    display: block; 
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px; 
+    position: relative;
+    background: white;
+    border-radius: 3px;
+    z-index: 1; 
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+
+.logo img {
+    width: 120px; 
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.prueba {
+    display: inline-flex;
+    margin-left: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.menu-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.menu-items li span {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.play-button {
+    width: 16px; 
+    height: 16px; 
+    background-color: #d90921; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px; 
+}
+
+.play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid white; /* White triangle */
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
