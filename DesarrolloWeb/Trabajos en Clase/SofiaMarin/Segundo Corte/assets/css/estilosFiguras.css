@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    border: 3px solid black;
+    height: 50px;
+}
+
+.grande{
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.a{ 
+    width: 50px;
+    background-color: blueviolet;
+    margin: 10px 5px 3px 8px;
+}
+
+.b{
+    width: 200px;
+    background-color: palevioletred;
+    text-align: center;
+    color: aliceblue;
+    font-size: 30px;
+}
+
+.c{
+    width: 150px;
+    background-color: coral;
+}
+
+.d{
+    width: 120px;
+    background-color: gold;
+}
+
+#x{ 
+    color: brown;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: underline;
+}
