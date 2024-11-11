@@ -1,0 +1,56 @@
+header {
+    background-color: #D90921;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+    color: white;
+    height: 7.8125rem;
+}
+
+.menu {
+    text-align: left;
+    margin-right: 5 rem;
+}
+
+.menu span {
+    display: block; 
+    width: 3.3rem;
+    height: 0.4rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    background: white;
+    border-radius: 0.3rem;
+    z-index: 1; 
+}
+
+.logo {
+    flex: 1;
+    text-align: left;
+}
+
+.logo img {
+    height: 5.8125rem;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 0rem;
+}
+
+.user span {
+    margin-right: 1rem;
+    font-size: 1.875rem;
+    padding-right: 2rem;
+}
+
+.user-circle {
+    width: 5rem;
+    height: 5rem;
+    background-color: white;
+    border-radius: 50%;  
+}

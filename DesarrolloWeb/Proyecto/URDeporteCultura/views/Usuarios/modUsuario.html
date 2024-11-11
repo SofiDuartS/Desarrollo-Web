@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/mainStyles.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/botones.css">
-    <link rel="stylesheet" href="../../assets/css/modUsuario.css">
     <title>UR Deporte y Cultura | Modificar Usuario</title>
 </head>
 <body>
@@ -30,29 +31,27 @@
             <form action="">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square"></div>
-                        <div class="formImagen">
-                            <input type="file" id="imagenActividad" style="display: none;">
-                            <label for="imagenActividad" id="customUploadText">
-                                <p>Elegir imagen</p>
-                            </label>
-                        </div>
+                        <div class="square" id="formImagenLleno"></div>
+                        <input type="file" id="imagenActividad" style="display: none;">
+                        <label for="imagenActividad" id="customUploadText">
+                            <p>Elegir imagen</p>
+                        </label>
                     </div>
                     <div class="formCampos">
                         <div class="formText">
-                            <label for="nombreUsuario"></label><br>
-                            <input type="text" id="nombreUsuario" required placeholder="Nombre">
+                            <label for="nombreUsuario">Nombre del usuario</label><br>
+                            <input type="text" id="nombreUsuario" required value="Pepito">
                         </div>
                         <div class="formText">
-                            <label for="apellidoUsuario"></label><br>
-                            <input type="text" id="apellidoUsuario" required placeholder="Apellido">
+                            <label for="apellidoUsuario">Apellido del usuario</label><br>
+                            <input type="text" id="apellidoUsuario" required value="Pérez">
                         </div>
                         <div class="formText">
-                            <label for="correoUsuario"> </label><br>
-                            <input type="text" id="correoUsuario" required placeholder="Correo Institucional">
+                            <label for="correoUsuario">Correo institucional</label><br>
+                            <input type="text" id="correoUsuario" required value="pepitoperez@urosario.edu.co">
                         </div>
           
-      
+                        <!-- Creo que esta parte no es necesaria -->
                         <div class="formText">
                             <label for="identidad"></label><br>
                             <input type="text" id="identidad" required placeholder="ID">
