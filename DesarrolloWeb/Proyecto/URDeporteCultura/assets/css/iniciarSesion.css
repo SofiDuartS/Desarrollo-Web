@@ -1,0 +1,83 @@
+.main {
+    padding-bottom: 12.25rem;
+    gap: 10.25rem;
+}
+.container {
+    display: flex;
+    justify-content: center; 
+    height: 100vh;
+    position: relative;
+    top: 16.4rem; /* 164px = 16.4rem */
+}
+
+.login {
+    background-color: rgb(240, 240, 240);
+    border-radius: 3rem; /* 30px = 3rem */
+    color: white;
+    padding: 1rem 2rem; /* 10px 20px = 1rem 2rem */
+    margin-right: 2rem; /* 20px = 2rem */
+    margin-top: 7rem; /* 70px = 7rem */
+    margin-left: 2rem; /* 20px = 2rem */
+    width: 77.2rem; /* 772px = 77.2rem */
+    height: 98rem; /* 980px = 98rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login img {
+    align-self: center;
+    height: 30rem; /* 300px = 30rem */
+}
+
+.login form {
+    width: 100%;
+    max-width: 40rem; /* 400px = 40rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login .form-group {
+    width: 100%;
+    margin-bottom: 1.5rem; /* 15px = 1.5rem */
+}
+
+.login label {
+    display: block;
+    margin-bottom: 0.5rem; /* 5px = 0.5rem */
+    color: black;
+}
+
+.login input {
+    width: 100%;
+    padding: 1rem; /* 10px = 1rem */
+    border: 0.1rem solid #ccc; /* 1px = 0.1rem */
+    border-radius: 0.5rem; /* 5px = 0.5rem */
+    height: 5rem; /* 50px = 5rem */
+    font-family: "League Spartan";
+    font-size: 1.875rem; /* 30px = 3rem */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.login button {
+    padding: 1.5rem 2rem; /* 15px 20px = 1.5rem 2rem */
+    border: none;
+    border-radius: 0.5rem; /* 5px = 0.5rem */
+    background-color: #D90921;
+    color: white;
+    cursor: pointer;
+}
+
+.login a {
+    color: #D90921;
+    text-decoration: none;
+    font-size: 1.84rem; /* adjusted to rem */
+}
+
+.login button:hover {
+    background-color: #0056b3;
+}
