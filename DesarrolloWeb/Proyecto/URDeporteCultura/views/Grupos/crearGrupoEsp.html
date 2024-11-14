@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UR Deporte y Cultura | Crear Grupo </title>
-    <link rel="stylesheet" href="../../assets/css/crearGrupoEsp.css">
+    <link rel="stylesheet" href="../../assets/css/mainStyles.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/botones.css">
 </head>
 <body>
@@ -24,14 +25,17 @@
         </div>
     </header>
 
-     <div class="contenidoPrincipal">
-        <div class="elementosCentrados">
+     <div class="mainContainer">
+        <div class="centeringContainer">
             <h1 class="tituloSeccion">Crear Nuevo Grupo Institucional</h1>
             <form action="">
                 <div class="formContent">
                     <div class="formImagen">
-                        <input type="file" id="imagenGrupo">
-                        <label for="imagenGrupo">Elegir Imagen</label>
+                        <div class="square"></div>
+                        <input type="file" id="imagenActividad" style="display: none;">
+                        <label for="imagenActividad" id="customUploadText">
+                            <p>Elegir imagen</p>
+                        </label>
                     </div>
                     <div class="formCampos">
                         <div class="formText">

@@ -1,14 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=League+Spartan:wght@100..900&display=swap');
-
-html {
-    font-size: 60%;
-  }
-
-:root{
-    --UR---Rojo: #d90921;
-    --UR---Azul: #3100A0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
 *{
     margin: 0;
@@ -16,81 +7,23 @@ html {
     box-sizing: border-box;
 }
 
-/* ---------- INICIO CÓDIGO HEADER CAMILO ---------- */
+:root{
+    --UR---Rojo: #d90921;
+    --UR---Azul: #3100A0;
+}
+
+html {
+    font-size: 60%;
+}
+
 body {
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    /* width: 1440px;
-    height: 1465px; */
 }
 
-header {
-    background-color: #D90921;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    color: white;
-    /* height: 125px; */
-    height: 7.8125rem;
-}
-
-.menu {
-    text-align: left;
-    margin-right: 50px;
-}
-
-.menu span {
-    display: block; 
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px; 
-    position: relative;
-    background: white;
-    border-radius: 3px;
-    z-index: 1; 
-  }
-
-.logo {
-    flex: 1;
-    text-align: left;
-}
-
-.logo img {
-    /* height: 95px; */
-    height: 5.8125rem;
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    display: flex;
-    align-items: center;
-    position: relative;
-    left: 0rem;
-}
-
-.user span {
-    margin-right: 10px;
-    /* font-size: 25px; */
-    font-size: 1.875rem;
-    padding-right: 20px;
-}
-
-.user-circle {
-    /* width: 60px;
-    height: 60px; */
-    width: 5rem;
-    height: 5rem;
-    background-color: white;
-    border-radius: 50%;  
-}
-
-
-
-.contenidoPrincipal{
+.mainContainer{ /*.contenidoPrincipal en el otro archivo*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +31,7 @@ header {
     margin: 7.1rem 0rem;
 }
 
-.elementosCentrados{
+.centeringContainer{ /*.elementosCentrados en el otro archivo*/
     display: flex;
     width: 77.5rem;
     padding: 3.125rem 0rem;
@@ -108,6 +41,26 @@ header {
     gap: 3.125rem;
     border-radius: 1.25rem;
     background: #F2F2F2;
+}
+
+.contenidoPrincipal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 0rem; /* preguntarle a Sofi*/
+    margin: 7.1rem 0rem;
+}
+
+.elementosCentrados{
+    display: flex;
+    width: 77.5rem;
+    padding: 0rem; /* preguntarle a Sofi*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.125rem;
+    border-radius: 1.25rem;
+    background: #FFFFFF;
 }
 
 .tituloSeccion{
@@ -139,6 +92,13 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 0.9375rem;
+    border-radius: 1.25rem;
+}
+
+#formImagenLleno{
+    background: url(../img/natacion.jpg) 50% / cover no-repeat;
+    height: 21.875rem;
+    /*La línea anterior tiene que ser con base de datos!*/
 }
 
 .formImagen input{
@@ -189,7 +149,7 @@ header {
     line-height: normal;
 }
 
-.formText input, .formText select{
+.formText input, select{
     width: 36.5625rem;
     height: 3.75rem;
     flex-shrink: 0;
@@ -203,3 +163,36 @@ header {
     line-height: normal;
 }
 
+.formContent{
+    align-items: center;
+}
+
+.square{
+    width: 21.875rem;
+    height: 21.875rem;
+    background-color: #B9B9B9;
+    /*Toca agregar para que cambie de color a la imagen que se sube*/
+    border-radius: 1.5rem;
+}
+
+#customUploadText {
+    cursor: pointer;
+    color: var(--UR---Rojo);
+    /* leading-trim: both;
+    text-edge: cap; */
+    font-family: "League Spartan";
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.prueba{ /*Para organizar los cards*/
+    display: flex;
+    width: 1240px;
+    padding: 0px 0px;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
