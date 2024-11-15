@@ -9,7 +9,7 @@ header {
 }
 
 .menu {
-    text-align: left;
+    text-align: right;
     margin-right: 20px;
 }
 
@@ -50,6 +50,7 @@ header {
     margin-right: 1rem;
     font-size: 1.875rem;
     padding-right: 2rem;
+    text-align: right;
 }
 
 .user-circle {
@@ -57,4 +58,53 @@ header {
     height: 5rem;
     background-color: white;
     border-radius: 50%;  
+}
+
+@media screen and (max-width: 640px) {
+    header{
+        height: 5rem;
+        padding: 4rem;
+    }
+
+    .menu {
+        text-align: left;
+        margin-right: 15px;
+    }
+    
+    .menu:hover{
+        cursor: pointer;
+    }
+    
+    .menu span {
+        display: block; 
+        width: 2.6rem;
+        height: 0.3rem;
+        margin: 0.3rem;
+        position: relative;
+        background: white;
+        border-radius: 0.3rem;
+        z-index: 1; 
+    }
+
+    .logo {
+        flex: 1;
+        text-align: left;
+    }
+    
+    .logo img {
+        height: 4rem;
+    }
+
+    .user span {
+        margin-right: 1rem;
+        font-size: 1.4rem;
+        padding-right: 0.5rem;
+    }
+
+    .user-circle {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: white;
+        border-radius: 50%;
+    }
 }

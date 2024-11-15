@@ -53,7 +53,7 @@ body {
 
 .elementosCentrados{
     display: flex;
-    width: 77.5rem;
+    width: 100%;
     padding: 0rem; /* preguntarle a Sofi*/
     flex-direction: column;
     justify-content: center;
@@ -187,12 +187,98 @@ body {
     line-height: normal;
 }
 
-.prueba{ /*Para organizar los cards*/
-    display: flex;
-    width: 1240px;
-    padding: 0px 0px;
-    flex-direction:row;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+.cardContainer{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
+    gap: 3rem 2rem;
+    margin: 0rem 3.125rem;
+}
+
+/* Celulares */
+
+@media screen and (max-width: 640px){
+
+    .tituloSeccion{
+        padding: 0 1rem;
+    }
+
+    .formContent{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .centeringContainer{
+        padding: 5rem 0rem;
+        max-width: 70%;
+    }
+
+    .tituloSeccion{
+        font-size: 2rem;
+    }
+
+    .square{
+        width: 20rem;
+        height: 20rem;
+    }
+
+    #customUploadText{
+        font-size: 1.5rem;
+    }
+
+    .formContent{
+        width: 95%;
+    }
+
+    .formText label{
+        font-size: 1.5rem;
+    }
+
+    .formText input, select{
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    .formCampos{
+        width: 70%;
+    }
+
+    input[type="submit"], input[type="reset"]{
+        font-size: 1.5rem;
+    }
+
+    .mainContainer{
+        margin: 3rem 0rem;
+    }
+
+}
+
+/* Celulares grandes */
+@media screen and (max-width: 768px){
+    /* Poner la imagen arriba del resto de los campos */
+    .formContent{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Aumentar el padding vertical del div de centrar */
+    .centeringContainer{
+        padding: 5rem 0rem;
+        max-width: 70%;
+    }
+
+}
+
+/* Tablets */
+@media screen and (max-width: 1025px){
+    .formContent{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .centeringContainer{
+        padding: 5rem 0rem;
+        max-width: 70%;
+    }
+
 }
