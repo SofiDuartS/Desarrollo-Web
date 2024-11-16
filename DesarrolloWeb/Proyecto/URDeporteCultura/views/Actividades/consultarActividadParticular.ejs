@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/mainStyles.css">
-    <link rel="stylesheet" href="../../assets/css/header.css">
-    <link rel="stylesheet" href="../../assets/css/botones.css">
+    <link rel="stylesheet" href="/css/mainStyles.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/botones.css">
     <title>UR Deporte y Cultura | Consultar Actividad</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
             <span></span>
         </div>
         <div class="logo">
-            <img src="../../assets/img/logo.png">
+            <img src="/img/logo.png">
         </div>
 
         <div class="user">
@@ -27,22 +27,22 @@
 
      <div class="mainContainer">
         <div class="centeringContainer">
-            <h1 class="tituloSeccion">Torneo Nacional ASCUN - Natación</h1>
-            <form action="">
+            <h1 class="tituloSeccion"><%= actividad.nombre %> - <%= actividad.grupo %></h1>
+            <form action="/actividades/actualizar/<%= actividad._id %>">
                 <div class="formContent">
                     <div class="formImagen" id="formImagenLleno"></div>
                     <div class="formCampos">
                         <div class="formText" id="formFecha">
                             <label for="fechaActividad">Fecha de la actividad</label><br>
-                            <input type="date" id="fechaActividad" value="2024-09-19" readonly>
+                            <input type="date" id="fechaActividad" value="<%= actividad.fecha %>" readonly>
                         </div>
                         <div class="formText" id="formLugar">
                             <label for="lugarActividad">Lugar de la actividad</label><br>
-                            <input type="text" id="lugarActividad" value="Complejo acuático de Pereira" readonly>
+                            <input type="text" id="lugarActividad" value="<%= actividad.ubicacion %>" readonly>
                         </div>
                         <div class="formText">
                             <label for="resultadoActividad">Resultado de la actividad</label><br>
-                            <input type="text" id="resultadoActividad"  value="No establecido" readonly>
+                            <input type="text" id="resultadoActividad"  value="<%= actividad.resultado %>" readonly>
                         </div>
                     </div>
                 </div>

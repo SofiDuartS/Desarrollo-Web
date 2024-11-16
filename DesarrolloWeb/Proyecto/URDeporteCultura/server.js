@@ -3,11 +3,8 @@ import {__dirname} from "./util/__dirname.js";
 import {join} from "path";
 
 import {connectDB} from "./config/database.js";
-import {obtenerActividades} from "./controllers/activityController.js";
-import {crearActividad} from "./controllers/activityController.js";
-import {obtenerActividadPorId} from "./controllers/activityController.js";
-import {actualizarActividad} from "./controllers/activityController.js";
-import {eliminarActividad} from "./controllers/activityController.js";
+import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad, formularioActualizarActividad, formularioRegistroActividad} from "./controllers/activityController.js";
+
 
 const server = express();
 // ---------- Conexion a la base de datos ----------
@@ -23,10 +20,12 @@ server.use(json());
 // ---------- Rutas ----------
 // Meter aquí las rutas para ejecutar las funciones de los controladores
 
-server.get('/actividades', obtenerActividades);
+server.get('/actividades', consultarActividades);
 server.post('/actividades/crear', crearActividad);
+server.get('/actividades/crear', formularioRegistroActividad);
 server.get('/actividades/actividad/:id', obtenerActividadPorId);
 server.post('/actividades/actualizar', actualizarActividad);
+server.get('/actividades/actualizar/:id', formularioActualizarActividad);
 server.delete('/actividades/eliminar/:id', eliminarActividad);
 
 // ---------- Configuración del motor de plantillas ----------
