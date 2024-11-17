@@ -6,7 +6,7 @@ export const crearActividad = async (req, res) => {
         console.log(data);
         await ActivityModel.create(data);
         const actividades = await ActivityModel.find();
-        res.render('Actividades/consultarActividades', {actividades: actividades});
+        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
         // res.status(200).json(actividades);
         console.log("Actividad creada correctamente");
     }
@@ -19,7 +19,20 @@ export const crearActividad = async (req, res) => {
 export const consultarActividades = async (req, res) => {
     try{
         const actividades = await ActivityModel.find();
-        res.render('Actividades/consultarActividades', {actividades: actividades});
+        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
+        console.log("Actividades obtenidas correctamente");
+    }
+    catch(error){
+        // res.status(400).json({mensaje: error.message});
+        console.log("Error al obtener las actividades");
+    }
+}
+
+export const consultarActividadesTitulo = async (req, res) => {
+    try{
+        const titulo = req.params.titulo;
+        const actividades = await ActivityModel.find();
+        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: titulo});
         console.log("Actividades obtenidas correctamente");
     }
     catch(error){
@@ -68,7 +81,7 @@ export const eliminarActividad = async (req, res) => {
     try {
         await ActivityModel.deleteOne({_id: req.params.id});
         const actividades = await ActivityModel.find();
-        res.render('consultarActividades', {actividades: actividades});
+        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
         // res.status(200).json(actividades);
         console.log("Actividad eliminada correctamente");
     }

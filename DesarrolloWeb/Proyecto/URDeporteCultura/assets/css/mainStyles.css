@@ -23,6 +23,12 @@ body {
     font-style: normal;
 }
 
+.actionDescription{
+    font-size: 1.5rem;
+    margin: -1rem;
+    color: #565555;
+}
+
 .mainContainer{ /*.contenidoPrincipal en el otro archivo*/
     display: flex;
     justify-content: center;
@@ -195,6 +201,178 @@ body {
     margin: 0rem 3.125rem;
 }
 
+/* Estilos para datatable */
+
+
+/*Prueba datatables*/
+
+.dataTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataTables_wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.dataTables_filter {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.dataTables_paginate {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.dataTables_paginate .paginate_button {
+    background: var(--UR---Azul, #3100A0);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: var(--UR---Rojo, #d90921);
+}
+
+table.dataTable tbody tr {
+    display: table-row !important;
+    border: none !important;
+}
+
+.dt-container, .dt-empty-footer{
+    width: 90%;
+}
+
+.top{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 4rem;
+    margin-right: 10rem;
+}
+
+.dt-search{
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.dt-input{
+    border: none;
+    border-bottom: 1px solid #797878;
+    width: 25rem;
+    margin-left: 1rem;
+    
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    color: #797878;
+}
+
+.dt-input:focus{
+    outline: none;
+    border-bottom: 1px solid var(--UR---Azul, #3100A0);
+}
+
+colgroup{
+    display: none;
+}
+
+.sorting_1{
+    margin: auto;
+}
+
+tr{
+    margin: auto;
+}
+
+.bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0rem;
+}
+
+.dt-paging{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+}
+
+.dt-paging nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.dt-paging-button{
+    display: flex;
+    min-height: 3.25rem;
+    height: fit-content;
+    max-width: 11rem;
+    width: fit-content;
+    min-width: 1.5rem;
+    margin: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: none;
+
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding: 0.625rem 1.25rem;
+    transition: background-color 0.5s ease-out;
+    background-color: #ffffff;
+}
+
+.dt-paging-button:hover{
+    text-decoration: underline;
+    color: #21016b;
+    cursor: pointer;
+}
+
+.disabled{
+    color: #797878;
+}
+
+.disabled:hover{
+    background-color: #ffffff;
+    color: #797878;
+    text-decoration: none;
+    cursor: not-allowed;
+}
+
+.dt-empty{
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding: 0.625rem 1.25rem;
+}
+
 /* Celulares */
 
 @media screen and (max-width: 640px){
@@ -249,6 +427,19 @@ body {
 
     .mainContainer{
         margin: 3rem 0rem;
+    }
+
+    .top{
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .dt-paging-button{
+        font-size: 1.25rem;
+    }
+
+    .dt-paging nav{
+        width: 300px;
     }
 
 }
