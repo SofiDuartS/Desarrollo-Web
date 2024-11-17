@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/mainStyles.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/botones.css">
-    <title>UR Deporte y Cultura | Crear Actividad</title>
-</head>
-<body>
-    <header>
-        <div class="menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="logo">
-            <img src="/img/logo.png">
-        </div>
-
-        <div class="user">
-            <span>Usuario 123</span>
-            <div class="user-circle"></div>
-        </div>
-    </header>
+<%- include('../components/header.ejs') -%>
+<%- include('../components/menuNavegacion.ejs') -%>
 
      <div class="mainContainer">
         <div class="centeringContainer">
@@ -49,6 +25,9 @@
                                 <option value="Natación">Natación</option>
                                 <option value="Ultimate">Ultimate</option>
                                 <option value="Rugby">Rugby</option>
+                                <option value="Teatro">Teatro</option>
+                                <option value="Ensamble de rock">Ensamble de rock</option>
+                                <option value="Danza árabe">Danza árabe</option>
                             </select>
                         </div>
                         <div class="formText" id="formFecha">
@@ -67,11 +46,16 @@
                 </div>
                 <div class="formButtonsContainer">
                     <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
-                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
+                    </form>
+                    <form action="/actividades">
+                        <input type="submit" class="formButton" id="formButtonRojo" value="Cancelar">
+                    </form>
                 </div>
             </form>
      
         </div>
     </div>
-</body>
-</html>
+
+    <%- include('../components/footer.ejs') -%>
+<!-- </body>
+</html> -->
