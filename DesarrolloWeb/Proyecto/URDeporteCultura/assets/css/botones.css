@@ -123,3 +123,23 @@
     background-color: #9f0819;
     cursor: pointer;
 }
+
+@media screen and (max-width: 640px){
+    .button{
+        width: 9rem;
+    }
+
+    .button a{
+        padding: 0.625rem 1rem;
+    }
+
+    .formButton{
+        width: 9rem;
+        padding: 0.1875rem 1rem;
+    }
+
+    .button p{
+        font-size: 1.5rem;
+    }
+
+}

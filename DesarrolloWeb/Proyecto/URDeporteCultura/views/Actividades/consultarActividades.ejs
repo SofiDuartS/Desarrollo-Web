@@ -1,0 +1,42 @@
+<%- include('../components/header.ejs') -%>
+<%- include('../components/menuNavegacion.ejs') -%>
+
+    <div class="contenidoPrincipal">
+        <div class="elementosCentrados">
+            <h1 class="tituloSeccion"><%= titulo %> Actividades</h1>
+            <% if (titulo == "Editar" || titulo == "Inhabilitar") {%>
+                <p class="actionDescription">Elija una actividad para <%= titulo.toLowerCase() %></p>
+            <% } %>
+            <!-- Tabla de actividades -->
+            <table id="tablaActividades" class="dataTable" style="width: 100%;">
+                <thead style="display: none;"> <!-- Ocultar encabezado porque no se usa -->
+                    <tr>
+                        <th>Card</th>
+                    </tr>
+                </thead>
+                <tbody class="cardContainer">
+                    <% actividades.forEach(actividad => { %>
+                        <tr>
+                            <td>
+                                <div class="card">
+                                    <div class="cardImage"></div>
+                                    <div class="cardContent">
+                                        <a href="/actividades/actividad/<%= actividad._id %>">
+                                            <h3><%= actividad.nombre %></h3>
+                                        </a>
+                                        <p><%= actividad.grupo %></p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../components/footer.ejs') -%>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="/js/dataTables.js"></script>
+</body>
+</html> -->

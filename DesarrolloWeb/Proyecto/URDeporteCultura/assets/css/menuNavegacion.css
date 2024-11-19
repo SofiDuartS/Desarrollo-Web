@@ -41,31 +41,6 @@ body {
     z-index: 1000;
 }
 
-.menu {
-    text-align: left;
-    margin-right: 20px;
-}
-
-.menu span {
-    display: block; 
-    width: 3.3rem;
-    height: 0.4rem;
-    margin: 0.5rem;
-    position: relative;
-    background: white;
-    border-radius: 0.3rem;
-    z-index: 1; 
-}
-
-.logo {
-    flex: 1;
-    text-align: left;
-}
-
-.logo img {
-    height: 5.8125rem;
-}
-
 .option {
     padding: 0 1.5rem;
     display: none;
@@ -141,4 +116,20 @@ body {
 .rotado{
     transform: rotate(90deg);
     transition: transform 0.3s;
+}
+@media screen and (max-width: 640px){
+    .sidebar{
+        width: 225px;
+        padding: 1.9rem 4rem;
+    }
+
+    .logo-menu{
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.7rem;
+    }
+
+    .menu-items li a {
+        font-size: 1.3rem;
+    }
 }
