@@ -1,6 +1,6 @@
 import { Schema, model} from "mongoose";
 
-const activitySchema = new Schema({
+const userSchema = new Schema({
     nombre: {type: String},
     apellido: {type: String},
     correo: {type: String},
@@ -11,6 +11,6 @@ const activitySchema = new Schema({
     // La URL guardada en la base de datos va a ser la ubicación de la imagen en el servidor
 })
 
-const ActivityModel = model('usuarios', activitySchema);
+const UserModel = model('usuarios', userSchema);
 
-export {ActivityModel};
+export { UserModel };
