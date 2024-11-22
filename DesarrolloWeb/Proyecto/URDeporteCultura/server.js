@@ -4,7 +4,7 @@ import {join} from "path";
 
 import {connectDB} from "./config/database.js";
 import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
-import { crearUsuario, formularioRegistroUsuario, modificarUsuario, obtenerUsuarioPorId, formularioActualizarUsuario } from "./controllers/userController.js";
+import { crearUsuario, formularioRegistroUsuario, obtenerUsuarioPorId, formularioActualizarUsuario, actualizarUsuario } from "./controllers/userController.js";
 
 
 const server = express();
@@ -33,7 +33,7 @@ server.get('/actividades/:titulo', consultarActividadesTitulo);
 server.post('/usuarios/crear', crearUsuario);
 server.get('/usuarios/crear', formularioRegistroUsuario);
 server.get('/usuarios/modificar/:id', obtenerUsuarioPorId);
-server.post('/usuarios/modificar', modificarUsuario);
+server.post('/usuarios/actualizar', actualizarUsuario);
 server.get('/usuarios/actualizar/:id', formularioActualizarUsuario);
 
 
