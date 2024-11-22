@@ -27,30 +27,41 @@
                             <label for="correoUsuario">Correo institucional</label><br>
                             <input type="text" id="correoUsuario" name="correo" required value="<%= usuario.correo %>">
                         </div>
-        
-                        <!-- Creo que esta parte no es necesaria -->
                         <div class="formText">
-                            <label for="identidad"></label><br>
+                            <label for="identidad">ID</label><br>
                             <input type="text" id="identidad" name="ids" required value="<%= usuario.ids %>">
                         </div>
                     </div>
                 </div>
                 <div class="formButtonsContainer">
                     <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
-                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
+                    <input type="submit" class="formButton" id="formButtonRojo" value="<%= usuario.estado ? 'Inhabilitar' : 'Habilitar' %>">
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('formButtonRojo').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default reset behavior
-                console.log('Cancelar button clicked');
-                window.location.href = '/usuarios'; // Redirect to another page
+
+                // Create a hidden input field for estado
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'estado';
+                hiddenInput.value = "<%= usuario.estado ? 'false' : 'true' %>";
+
+                // Append the hidden input field to the form
+                const form = document.querySelector('form');
+                form.appendChild(hiddenInput);
+
+                // Submit the form
+                form.submit();
             });
+
         });
     </script>
 
-<%- include('../components/footer.ejs') -%>
+    <%- include('../components/footer.ejs') -%>
+</body>
+</html>

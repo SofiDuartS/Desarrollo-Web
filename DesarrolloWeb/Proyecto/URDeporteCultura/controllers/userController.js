@@ -1,4 +1,4 @@
-import{ UserModel } from '../models/userModel.js';
+import { UserModel } from '../models/userModel.js';
 
 export const crearUsuario = async (req, res) => {
     try{
@@ -37,25 +37,28 @@ export const obtenerUsuarioPorId = async (req, res) => {
 
 export const actualizarUsuario = async (req, res) => {
     try {
-        const dataUpdated = req.body;
-        console.log('Request body:', dataUpdated); // Debugging statement
+        const { idUsuario, nombre, apellido, correo, ids, estado } = req.body;
+        console.log('Request body:', req.body); // Debugging statement
 
         // Check if the user exists before updating
-        const userExists = await UserModel.findById(req.body.idUsuario);
+        const userExists = await UserModel.findById(idUsuario);
         if (!userExists) {
             console.log('User not found');
             return res.status(404).json({ mensaje: 'User not found' });
         }
 
+        // Build the update object conditionally
+        const updateData = {
+            ...(nombre && { nombre }),
+            ...(apellido && { apellido }),
+            ...(correo && { correo }),
+            ...(ids && { ids }),
+            ...(estado !== undefined && { estado }) // Conditionally include estado
+        };
+
         const updateResult = await UserModel.updateOne(
-            { _id: req.body.idUsuario },
-            {
-                nombre: dataUpdated.nombre,
-                apellido: dataUpdated.apellido,
-                fecha: dataUpdated.fecha,
-                correo: dataUpdated.correo,
-                ids: dataUpdated.ids,
-            }
+            { _id: idUsuario },
+            { $set: updateData }
         );
 
         console.log('Update result:', updateResult); // Debugging statement
