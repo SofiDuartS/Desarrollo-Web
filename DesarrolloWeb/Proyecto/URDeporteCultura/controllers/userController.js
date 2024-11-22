@@ -1,4 +1,4 @@
-import { UserModel } from "../models/userModel";
+import { UserModel } from "../models/userModel.js";
 
 export const crearUsuario = async (req, res) => {
     try{
@@ -14,4 +14,8 @@ export const crearUsuario = async (req, res) => {
         console.log(error);
         // res.status(400).json({mensaje: error.message, usuarios});
     }
+}
+
+export const formularioRegistroUsuario = (req, res) => {
+    res.render('Usuarios/crearUsuario');
 }

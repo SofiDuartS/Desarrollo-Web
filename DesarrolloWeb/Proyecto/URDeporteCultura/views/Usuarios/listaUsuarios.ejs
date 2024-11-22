@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
     <header>
@@ -27,32 +29,58 @@
         </div>
     </header>
 
-  <main>
-    <div class="user-list-container">
-      <h1>Lista de usuarios</h1>
-      <table class="user-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Sample row, repeat as needed -->
-          <tr>
-            <td><input type="radio" name="user"></td>
-            <td><input type="text" value="Contenido del campo"></td>
-            <td><input type="text" value="Contenido del campo"></td>
-            <td><input type="text" value="Contenido del campo"></td>
-            <td><button class="modify-button">Modificar</button></td>
-          </tr>
-          <!-- Add more rows as required -->
-        </tbody>
-      </table>
-    </div>
-  </main>
+    <main>
+        <div class="user-list-container">
+            <h1>Lista de usuarios</h1>
+            <table id="userTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>Juan Pérez</td>
+        <td>juan.perez@example.com</td>
+        <td>Admin</td>
+    </tr>
+    <tr>
+        <td>Maria López</td>
+        <td>maria.lopez@example.com</td>
+        <td>Usuario</td>
+    </tr>
+    <!-- Add more user data as needed -->
+</tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function() {
+            $('#userTable').DataTable({
+                paging: true, // Enable pagination
+                searching: true, // Enable search
+                info: true, // Show table information
+                pageLength: 10, // Number of items per page
+                lengthChange: true, // Allow changing the number of items per page
+                language: {
+                    search: "Buscar:",
+                    paginate: {
+                        next: "Siguiente",
+                        previous: "Anterior"
+                    },
+                    emptyTable: "No hay usuarios disponibles",
+                    zeroRecords: "No se encontraron resultados",
+                }
+            });
+        });
+    </script>
 </body>
 </html>
