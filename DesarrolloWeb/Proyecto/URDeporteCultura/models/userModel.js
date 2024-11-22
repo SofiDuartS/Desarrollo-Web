@@ -3,9 +3,9 @@ import { Schema, model } from "mongoose";
 const userSchema = new Schema({
     nombre: { type: String, required: true },
     apellido: { type: String, required: true },
-    correo: { type: String, required: true, unique: true },
-    id: { type: String, required: true },
-    estado: { type: Boolean, default: true }, // habilidado o deshabilitado
+    correo: { type: String, required: true },
+    ids: { type: String, required: true},
+    estado: { type: Boolean, default: true, required: true }, // habilidado o deshabilitado
     imagen: { type: String } // Agregamos un campo imagen para almacenar la URL de la imagen
     // La imagen se va a subir con multer y se va a guardar en la carpeta uploads
     // La URL guardada en la base de datos va a ser la ubicación de la imagen en el servidor

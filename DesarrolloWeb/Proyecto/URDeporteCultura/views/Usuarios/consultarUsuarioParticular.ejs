@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/mainStyles.css">
-    <link rel="stylesheet" href="../../assets/css/header.css">
-    <link rel="stylesheet" href="../../assets/css/botones.css">
-    <title>UR Deporte y Cultura | Crear Usuario</title>
-</head>
-<body>
-    <header>
-        <div class="menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="logo">
-            <img src="../../assets/img/logo.png">
-        </div>
+<%- include('../components/header.ejs') -%>
+<%- include('../components/menuNavegacion.ejs') -%>
 
-        <div class="user">
-            <span>Usuario 123</span>
-            <div class="user-circle"></div>
-        </div>
-    </header>
-
-     <div class="mainContainer">
+    <div class="mainContainer">
         <div class="centeringContainer">
-            <h1 class="tituloSeccion">Crear Usuario</h1>
-            <form action="">
+            <h1 class="tituloSeccion">Modificar Usuario</h1>
+            <form action="/usuarios/modificar/<%= usuario._id %>" method="post">
                 <div class="formContent">
                     <div class="formImagen">
                         <div class="square" id="XXXXXXX"></div>
@@ -40,31 +16,40 @@
                     <div class="formCampos">
                         <div class="formText">
                             <label for="nombreUsuario">Nombre del usuario</label><br>
-                            <input type="text" id="nombreUsuario" required value="">
+                            <input type="text" id="nombreUsuario" value="<%= usuario.nombre %>" readonly>
                         </div>
                         <div class="formText">
                             <label for="apellidoUsuario">Apellido del usuario</label><br>
-                            <input type="text" id="apellidoUsuario" required value="">
+                            <input type="text" id="apellidoUsuario" value="<%= usuario.apellido %>" readonly>
                         </div>
                         <div class="formText">
                             <label for="correoUsuario">Correo institucional</label><br>
-                            <input type="text" id="correoUsuario" required value="">
+                            <input type="text" id="correoUsuario" value="<%= usuario.correo %>" readonly>
                         </div>
-          
+        
                         <!-- Creo que esta parte no es necesaria -->
                         <div class="formText">
                             <label for="identidad"></label><br>
-                            <input type="text" id="identidad" required placeholder="ID">
+                            <input type="text" id="identidad" value="<%= usuario.id %>" readonly>
                         </div>
                     </div>
                 </div>
                 <div class="formButtonsContainer">
                     <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
-                    <input type="reset" class="formButton" id="formButtonRojo" value="Inhabilitar">
+                    <input type="reset" class="formButton" id="formButtonRojo" value="Cancelar">
                 </div>
             </form>
-     
         </div>
     </div>
-</body>
-</html>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('formButtonRojo').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default reset behavior
+                console.log('Cancelar button clicked');
+                window.location.href = '/usuarios'; // Redirect to another page
+            });
+        });
+    </script>
+
+<%- include('../components/footer.ejs') -%>
