@@ -141,6 +141,7 @@ export const vUsuarios = async (req, res) => {
 }
 
 export const iniciarSesion = async (req, res) => {
+    console.log('GET /');
     try {
         res.render('Usuarios/iniciarSesion');
     } catch (error) {
@@ -152,6 +153,23 @@ export const recuperarCuenta = async (req, res) => {
     try {
         res.render('Usuarios/recuperarCuenta');
     } catch (error) {
+        console.log(error);
+    }
+}
+
+export const login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        console.log('POST /login');
+        console.log('Request body:', req.body); // Debugging statement  
+
+        // Simulate authentication (replace with your logic)
+        if (username === 'admin' && password === 'admin') {
+            res.redirect('/usuarios');
+        } else {
+            res.render('Usuarios/iniciarSesion', { error: true });
+        }
+    } catch (error) {   
         console.log(error);
     }
 }
