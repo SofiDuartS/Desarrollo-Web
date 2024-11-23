@@ -6,6 +6,7 @@ export const crearActividad = async (req, res) => {
         console.log(data);
         await ActivityModel.create(data);
         const actividades = await ActivityModel.find();
+        res.json(actividades);
         res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
         // res.status(200).json(actividades);
         console.log("Actividad creada correctamente");
@@ -77,17 +78,29 @@ export const actualizarActividad = async (req, res) => {
     }
 }
 
-export const eliminarActividad = async (req, res) => {
-    try {
-        await ActivityModel.deleteOne({_id: req.params.id});
+// Cambiando eliminar por inhabilitar
+export const inhabilitarActividad = async (req, res) => {
+    try{
+        await ActivityModel.updateOne({_id: req.params.id}, {estado: false});
         const actividades = await ActivityModel.find();
         res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
-        // res.status(200).json(actividades);
-        console.log("Actividad eliminada correctamente");
-    }
-    catch(error){
+        console.log("Actividad inhabilitada correctamente");
+    } catch(error){
         // res.status(400).json({mensaje: error.message});
-        console.log("Error al eliminar la actividad");
+        console.log("Error al inhabilitar la actividad");
+    }
+}
+
+// Creando función habilitar para deshacer la inhabilitación
+export const habilitarActividad = async (req, res) => {
+    try{
+        await ActivityModel.updateOne({_id: req.params.id}, {estado: true});
+        const actividades = await ActivityModel.find();
+        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
+        console.log("Actividad habilitada correctamente");
+    } catch(error){
+        // res.status(400).json({mensaje: error.message});
+        console.log("Error al habilitar la actividad");
     }
 }
 
