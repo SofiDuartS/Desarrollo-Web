@@ -1,13 +1,25 @@
+/* Ensure no extra margin or padding on body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    box-sizing: border-box;
+}
+
+/* Apply box-sizing to all elements */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the parent container takes full viewport height */
     padding-bottom: 12.25rem;
     gap: 10.25rem;
-}
-.container {
-    display: flex;
-    justify-content: center; 
-    height: 100vh;
-    position: relative;
-    top: 16.4rem; /* 164px = 16.4rem */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 .login {
@@ -15,15 +27,12 @@
     border-radius: 3rem; /* 30px = 3rem */
     color: white;
     padding: 1rem 2rem; /* 10px 20px = 1rem 2rem */
-    margin-right: 2rem; /* 20px = 2rem */
-    margin-top: 7rem; /* 70px = 7rem */
-    margin-left: 2rem; /* 20px = 2rem */
     width: 77.2rem; /* 772px = 77.2rem */
-    height: 98rem; /* 980px = 98rem */
+    height: 80rem; /* 980px = 98rem */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-top: 5rem;
 }
 
 .login img {
@@ -37,6 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5rem; /* Add margin-top to move the form down */
 }
 
 .login .form-group {
@@ -80,4 +90,34 @@
 
 .login button:hover {
     background-color: #0056b3;
+}
+
+/* Responsive styles for screens smaller than 768px */
+@media (max-width: 768px) {
+    .main {
+        padding-bottom: 6rem; /* Adjust padding for smaller screens */
+    }
+
+    .login {
+        width: 90%; /* Make the login container take 90% of the screen width */
+        height: auto; /* Adjust height to auto for better responsiveness */
+        padding: 2rem; /* Adjust padding for smaller screens */
+    }
+
+    .login img {
+        height: 20rem; /* Adjust image height for smaller screens */
+    }
+
+    .login form {
+        margin-top: 2rem; /* Adjust margin-top for smaller screens */
+    }
+
+    .login input {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+        height: 4rem; /* Adjust input height for smaller screens */
+    }
+
+    .login button {
+        padding: 1rem 1.5rem; /* Adjust button padding for smaller screens */
+    }
 }
