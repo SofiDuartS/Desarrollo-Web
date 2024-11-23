@@ -31,6 +31,9 @@
                             <label for="identidad">ID</label><br>
                             <input type="text" id="identidad" name="ids" required value="<%= usuario.ids %>">
                         </div>
+                        <div>
+                            <input type="hidden" id="estado" name="estado" value="<%= usuario.estado ? 'false' : 'true' %>">
+                        </div>
                     </div>
                 </div>
                 <div class="formButtonsContainer">
@@ -44,21 +47,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('formButtonRojo').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission
 
-                // Create a hidden input field for estado
-                const hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = 'estado';
-                hiddenInput.value = "<%= usuario.estado ? 'false' : 'true' %>";
+                // Toggle the button text and update the estado input field
+                const button = event.target;
+                const estado = document.getElementById('estado');
 
-                // Append the hidden input field to the form
-                const form = document.querySelector('form');
-                form.appendChild(hiddenInput);
-
-                // Submit the form
-                form.submit();
+                if (button.value === 'Inhabilitar') {
+                    button.value = 'Habilitar';
+                    estado.value = 'false';
+                } else {
+                    button.value = 'Inhabilitar';
+                    estado.value = 'true';
+                }
             });
-
         });
     </script>
 
