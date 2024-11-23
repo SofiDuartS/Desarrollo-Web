@@ -1,4 +1,4 @@
-<%- include('../components/header.ejs', { title: 'UR Deporte y Cultura | Iniciar Sesión', autenticado: false }) -%>
+<%- include('../components/header.ejs', { title: 'UR Deporte y Cultura | Recuperar Cuenta', autenticado: false }) -%>
 <link rel="stylesheet" href="/css/iniciarSesion.css">
     <div class="main">
         <div class="container">
@@ -13,17 +13,20 @@
                         <input type="text" id="username" name="username"
                         placeholder="Correo Institucional">
                     </div>
-                    <div class="form-group">
-                        <label for="password"></label>
-                        <input type="password" id="password" name="password"
-                        placeholder="Contraseña">
+                    <br><br>
+                    <div id="recuperarCuenta">
+                        <input type="submit" class="formButton" id="formButtonAzul" value="Recuperar Cuenta">
                     </div>
-                    <br><br>
-                    <button type="submit">Iniciar Sesión</button>
-                    <br><br>
-                    <a href="/recuperarCuenta">Recuperar Cuenta</a>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+             document.getElementById('formButtonAzul').addEventListener('click', function(event) {
+                 event.preventDefault(); // Prevent the default reset behavior
+                 window.location.href = '/'; // Redirect to another page
+             });
+         });
+     </script>
 <%- include('../components/footer.ejs') -%>
