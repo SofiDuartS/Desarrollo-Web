@@ -1,5 +1,23 @@
 $(document).ready(function () {
+
+    // Para ordenar los cards por estado. Primero habilitados
+    $.fn.dataTable.ext.order['estado-orden'] = function (settings, colIndex) {
+        return settings.aoData.map(function (row) {
+            const cell = $(row.anCells[colIndex]);
+            const estado = cell.data('estado');
+            return estado === true || estado === "true" ? 0 : 1; // Habilitados (0), Inhabilitados (1)
+        });
+    };
+
     var table = $('#tablaActividades').DataTable({
+        columns: [
+            { data: 'cards' },
+            { data: 'estado', visible: false } // Estado, oculto pero necesario para ordenar
+        ],
+        columnDefs: [
+            { targets: 1, orderDataType: 'estado-orden' } // Ordenar por estado
+        ],
+        order: [[1, 'asc']], // Ordenar por estado
         paging: true, // Habilitar paginación
         searching: true, // Habilitar búsqueda
         info: false, // Ocultar información del estado
@@ -16,8 +34,5 @@ $(document).ready(function () {
             zeroRecords: "No se encontraron resultados",
         },
         autoWidth: false, // Evitar estilos automáticos de ancho
-        columnDefs: [
-            { targets: [0], orderable: false } // Deshabilitar ordenamiento para los cards
-        ]
     });
 });
