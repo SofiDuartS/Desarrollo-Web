@@ -4,6 +4,9 @@
      <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion"><%= actividad.nombre %> - <%= actividad.grupo %></h1>
+            <% if (!actividad.estado){ %>
+                <p class="actionDescription">Esta actividad está inhabilitada</p>
+            <% }%>
             <form action="/actividades/actualizar/<%= actividad._id %>">
                 <div class="formContent">
                     <div class="formImagen" id="formImagenLleno"></div>
@@ -25,9 +28,15 @@
                 <div class="formButtonsContainer">
                     <input type="submit" class="formButton" id="formButtonAzul" value="Editar">
                     </form>
-                    <form action="/actividades/eliminar/<%= actividad._id %>" method="post">
-                        <input type="submit" class="formButton" id="formButtonRojo" value="Inhabilitar">
-                    </form>
+                    <% if (actividad.estado){ %>
+                        <form action="/actividades/inhabilitar/<%= actividad._id %>" method="post">
+                            <input type="submit" class="formButton" id="formButtonRojo" value="Inhabilitar">
+                        </form>
+                    <% } else { %>
+                        <form action="/actividades/habilitar/<%= actividad._id %>" method="post">
+                            <input type="submit" class="formButton" id="formButtonRojo" value="Habilitar">
+                        </form>
+                    <% } %>
                 </div>
         </div>
     </div>

@@ -35,6 +35,11 @@ html {
     transition: transform 0.5s ease-out;
 }
 
+.inhabilitado{
+    /* pointer-events: none; */
+    opacity: 0.5;
+}
+
 .card a{
     text-decoration: none;
     width: 100%;
