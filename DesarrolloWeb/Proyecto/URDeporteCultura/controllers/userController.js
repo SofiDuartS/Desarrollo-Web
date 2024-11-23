@@ -139,3 +139,19 @@ export const vUsuarios = async (req, res) => {
         console.log(error);
     }
 }
+
+export const iniciarSesion = async (req, res) => {
+    try {
+        res.render('Usuarios/iniciarSesion');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const recuperarCuenta = async (req, res) => {
+    try {
+        res.render('Usuarios/recuperarCuenta');
+    } catch (error) {
+        console.log(error);
+    }
+}
