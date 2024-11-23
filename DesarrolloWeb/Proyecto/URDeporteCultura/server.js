@@ -3,9 +3,8 @@ import {__dirname} from "./util/__dirname.js";
 import {join} from "path";
 
 import {connectDB} from "./config/database.js";
-import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, inhabilitarActividad, habilitarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
-import { crearUsuario, formularioRegistroUsuario, obtenerUsuarioPorId, formularioActualizarUsuario, actualizarUsuario, consultarUsuarios } from "./controllers/userController.js";
-
+import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
+import { crearUsuario, formularioRegistroUsuario, obtenerUsuarioPorId, formularioActualizarUsuario, actualizarUsuario, consultarUsuarios, vUsuarios } from "./controllers/userController.js";
 
 const server = express();
 // ---------- Conexion a la base de datos ----------
@@ -36,9 +35,7 @@ server.get('/usuarios/crear', formularioRegistroUsuario);
 server.get('/usuarios/:id', obtenerUsuarioPorId);
 server.post('/usuarios/actualizar', actualizarUsuario);
 //server.get('/usuarios/actualizar/:id', formularioActualizarUsuario);
-server.get('/usuarios', consultarUsuarios)
-
-
+server.get('/usuarios', vUsuarios);
 
 // La última ara que se muestre un título diferente dependiendo de si la acción que se quiera hacer. Por ejemplo, si se quiere consultar, se muestra "Consultar actividades", si se quiere actualizar, se muestra "Actualizar actividad", etc.
 

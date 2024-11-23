@@ -6,7 +6,7 @@ export const crearUsuario = async (req, res) => {
         console.log(data);
         await UserModel.create(data);
         const usuarios = await UserModel.find();
-        res.render('Usuarios/listaUsuarios', {usuarios: usuarios, titulo: "Consultar"});
+        res.render('Usuarios/usuarios', {usuarios: usuarios, titulo: "Consultar"});
         // res.status(200).json(usuarios);
         console.log("Usuario creado correctamente");
     }
@@ -119,12 +119,23 @@ export const formularioActualizarUsuario = async (req, res) => {
 export const consultarUsuarios = async (req, res) => {
     try{
         const data = await UserModel.find();
-        console.log(data);
+        //console.log(data);
         res.render('Usuarios/listaUsuarios', { usuarios: data });
         console.log("Usuarios obtenidos correctamente");
     }
     catch(error){
         // res.status(400).json({mensaje: error.message});
         console.log("Error al obtener usuarios");
+    }
+}
+
+
+export const vUsuarios = async (req, res) => {
+    try {
+        const usuarios = await UserModel.find();
+       //console.log(usuarios);
+        res.render('Usuarios/usuarios', {usuarios: usuarios, titulo: "Consultar"});
+    } catch (error) {
+        console.log(error);
     }
 }
