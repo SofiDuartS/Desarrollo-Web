@@ -3,7 +3,7 @@ import {__dirname} from "./util/__dirname.js";
 import {join} from "path";
 
 import {connectDB} from "./config/database.js";
-import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
+import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, inhabilitarActividad, habilitarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
 import { crearUsuario, formularioRegistroUsuario, obtenerUsuarioPorId, formularioActualizarUsuario, actualizarUsuario, consultarUsuarios, vUsuarios, iniciarSesion, recuperarCuenta } from "./controllers/userController.js";
 
 const server = express();
