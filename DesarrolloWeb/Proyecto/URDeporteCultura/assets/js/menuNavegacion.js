@@ -7,9 +7,7 @@ const sombra = document.querySelector('#sombra');
 const usuarios = document.querySelector('#usuarios');
 const crearUsuarios = document.querySelector('#crearUsuarios');
 const verUsuarios = document.querySelector('#verUsuarios');
-const editarUsuarios = document.querySelector('#editarUsuarios');
-const inhabilitarUsuarios = document.querySelector('#inhabilitarUsuarios');
-const opcionesUsuarios = [crearUsuarios, verUsuarios, editarUsuarios, inhabilitarUsuarios];
+const opcionesUsuarios = [crearUsuarios, verUsuarios];
 
 /* -------------------- GRUPOS --------------------*/
 const grupos = document.querySelector('#grupos');

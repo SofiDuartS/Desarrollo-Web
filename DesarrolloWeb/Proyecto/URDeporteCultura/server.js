@@ -6,7 +6,6 @@ import {connectDB} from "./config/database.js";
 import {consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo} from "./controllers/activityController.js";
 import { crearUsuario, formularioRegistroUsuario, obtenerUsuarioPorId, formularioActualizarUsuario, actualizarUsuario, consultarUsuarios, vUsuarios, iniciarSesion, recuperarCuenta } from "./controllers/userController.js";
 
-
 const server = express();
 // ---------- Conexion a la base de datos ----------
 connectDB().then(()=>{console.log('Base de datos conectada');
@@ -27,8 +26,9 @@ server.get('/actividades/crear', formularioRegistroActividad);
 server.get('/actividades/actividad/:id', obtenerActividadPorId);
 server.post('/actividades/actualizar', actualizarActividad);
 server.get('/actividades/actualizar/:id', formularioActualizarActividad);
-server.post('/actividades/eliminar/:id', eliminarActividad);
-server.get('/actividades/:titulo', consultarActividadesTitulo); 
+server.post('/actividades/inhabilitar/:id', inhabilitarActividad);
+server.post('/actividades/habilitar/:id', habilitarActividad);
+server.get('/actividades/:titulo', consultarActividadesTitulo);
 
 server.post('/usuarios/crear', crearUsuario);
 server.get('/usuarios/crear', formularioRegistroUsuario);
