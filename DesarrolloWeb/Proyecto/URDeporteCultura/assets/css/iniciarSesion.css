@@ -121,3 +121,10 @@ html, body {
         padding: 1rem 1.5rem; /* Adjust button padding for smaller screens */
     }
 }
+
+.error-message {
+    color: red;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
