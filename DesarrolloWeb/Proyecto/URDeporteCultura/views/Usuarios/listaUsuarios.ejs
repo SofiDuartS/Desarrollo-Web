@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UR Deporte y Cultura | Lista Usuarios </title>
-    <link rel="stylesheet" href="../../assets/css"> <!-- This is a placeholder, replace with the correct path -->
-    <link rel="stylesheet" href="../../assets/css/mainStyles.css">
-    <link rel="stylesheet" href="../../assets/css/header.css">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/assets/css/mainStyles.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -14,48 +13,38 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <header>
-        <div class="menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="logo">
-            <img src="../../assets/img/logo.png">
-        </div>
+    <%- include('../components/header.ejs') -%>
+    <%- include('../components/menuNavegacion.ejs') -%>
 
-        <div class="user">
-            <div class="user-circle"></div>
-        </div>
-    </header>
-
-    <main>
-        <div class="user-list-container">
-            <h1>Lista de usuarios</h1>
-            <table id="userTable" class="display">
+    <div class="mainContainer">
+        <div class="centeringContainer">
+            <h1 class="tituloSeccion">Lista de Usuarios</h1>
+            <table id="userTable">
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Correo</th>
-                        <th>Rol</th>
+                        <th>ID</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-    <tr>
-        <td>Juan Pérez</td>
-        <td>juan.perez@example.com</td>
-        <td>Admin</td>
-    </tr>
-    <tr>
-        <td>Maria López</td>
-        <td>maria.lopez@example.com</td>
-        <td>Usuario</td>
-    </tr>
-    <!-- Add more user data as needed -->
-</tbody>
+                    <% usuarios.forEach(usuario => { %>
+                        <tr>
+                            <td><%= usuario.nombre %></td>
+                            <td><%= usuario.apellido %></td>
+                            <td><%= usuario.correo %></td>
+                            <td><a href="/usuarios/<%= usuario._id %>"><%= usuario.ids %></a></td>
+                            <td><%= usuario.estado ? 'Activo' : 'Inactivo' %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
             </table>
         </div>
-    </main>
+    </div>
+
+    <%- include('../components/footer.ejs') -%>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -72,9 +72,8 @@ export const actualizarUsuario = async (req, res) => {
             console.log('No documents were updated');
         }
 
-        const usuario = await UserModel.findById(req.body.idUsuario);
-        res.render('Usuarios/listaUsuarios', { usuario: usuario });
         console.log('Usuario modificado correctamente');
+        res.redirect('/usuarios'); // Redirect to the desired page after successful update
     } catch (error) {
         console.log('Error al modificar usuario:', error.message);
         res.status(400).json({ mensaje: error.message });
@@ -114,5 +113,18 @@ export const formularioActualizarUsuario = async (req, res) => {
     } catch (error) {
         // res.status(400).json({mensaje: error.message});
         console.log(error);
+    }
+}
+
+export const consultarUsuarios = async (req, res) => {
+    try{
+        const data = await UserModel.find();
+        console.log(data);
+        res.render('Usuarios/listaUsuarios', { usuarios: data });
+        console.log("Usuarios obtenidos correctamente");
+    }
+    catch(error){
+        // res.status(400).json({mensaje: error.message});
+        console.log("Error al obtener usuarios");
     }
 }
