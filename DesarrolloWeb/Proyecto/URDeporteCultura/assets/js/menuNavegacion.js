@@ -116,6 +116,6 @@ sombra.addEventListener('click', () => {
 
 usuarios.addEventListener('click', eventoOption(0, abierto, opciones, playbuttons));
 
-grupos.addEventListener('click', eventoOption(1, abierto, opciones, playbuttons))
+grupos.addEventListener('click', eventoOption(1, abierto, opciones, playbuttons));
 
-actividades.addEventListener('click', eventoOption(2, abierto, opciones, playbuttons))
+actividades.addEventListener('click', eventoOption(2, abierto, opciones, playbuttons));
