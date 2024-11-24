@@ -18,25 +18,27 @@
             </thead>
             <tbody>
                 <% usuarios.forEach(usuario => { %>
-                    <tr>
-                        <td><%= usuario.nombre %></td>
-                        <td><%= usuario.apellido %></td>
-                        <td><%= usuario.correo %></td>
-                        <td><%= usuario.ids %></td>
-                        <td><%= usuario.estado ? 'Activo' : 'Inactivo' %></td>
-                        <td>
-                            <a href="/usuarios/<%= usuario._id %>" class="button-link">
-                                <button class="formButton" id="formButtonRojo" type="button">Modificar</button>
-                            </a>
-                        </td>
-                    </tr>
+                    <% if (!usuario.isAdmin) { %>
+                        <tr>
+                            <td><%= usuario.nombre %></td>
+                            <td><%= usuario.apellido %></td>
+                            <td><%= usuario.correo %></td>
+                            <td><%= usuario.ids %></td>
+                            <td><%= usuario.estado ? 'Activo' : 'Inactivo' %></td>
+                            <td>
+                                <a href="/usuarios/<%= usuario._id %>" class="button-link">
+                                    <button class="formButton" id="formButtonRojo" type="button">Modificar</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <% } %>
                 <% }) %>
             </tbody>
         </table>
-    </div>
-
-
-    <%- include('../components/footer.ejs') -%>
+    </main>
+    <footer>
+        <%- include('../components/footer.ejs') %>
+    </footer>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
