@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { UserModel } from '../models/userModel.js';
 
 export const crearUsuario = async (req, res) => {
@@ -6,30 +7,29 @@ export const crearUsuario = async (req, res) => {
         console.log(data);
         await UserModel.create(data);
         const usuarios = await UserModel.find();
-        res.render('Usuarios/usuarios', {usuarios: usuarios, titulo: "Consultar"});
-        // res.status(200).json(usuarios);
+        res.redirect('/usuarios');
         console.log("Usuario creado correctamente");
     }
     catch(error){
         console.log(error);
-        // res.status(400).json({mensaje: error.message, usuarios});
     }
 }
 
-export const formularioRegistroUsuario = (req, res) => {
-    res.render('Usuarios/crearUsuario');
+export const renderCrearUsuario = (req, res) => {
+    try {
+        res.render('Usuarios/crearUsuario');
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-export const obtenerUsuarioPorId = async (req, res) => {
+export const obtenerUsuario = async (req, res) => {
     try {
         const id = req.params.id;
-        const usuario = await UserModel.findById(id);
-        // res.status(200).json(actividad);
-        res.render('Usuarios/consultarUsuarioParticular', {usuario: usuario});
-        console.log("Usuario obtenido correctamente");
-        
+        const userId = await UserModel.findById(id);
+        res.render('Usuarios/consultarUsuario', { usuario: userId });
+        console.log("Usuario obtenido correctamente"); 
     } catch (error) {
-        // res.status(400).json({mensaje: error.message});
         console.log("Error al obtener usuario");
     }
 }
@@ -80,68 +80,16 @@ export const actualizarUsuario = async (req, res) => {
     }
 };
 
-export const eliminarUsuario = async (req, res) => {
+export const getUsuarios = async (req, res) => {
     try {
-        await UserModel.deleteOne({_id: req.params.id});
-        const usuarios = await UserModel.find();
-        res.render('Usuarios/listaUsuarios', {usuarios: usuarios, titulo: "Consultar"});
-        // res.status(200).json(actividades);
-        console.log("Usuario eliminado correctamente");
-    }
-    catch(error){
-        // res.status(400).json({mensaje: error.message});
-        console.log("Error al eliminar usuario");
-    }
-}
-
-export const formularioModificarUsuario = async (req, res) => {
-    try {
-        const id = req.params.id;
-        const usuario = await ActivityModel.findById(id);
-        res.render('Usuarios/modUsuario', {usuario: usuario});
-    } catch (error) {
-        // res.status(400).json({mensaje: error.message});
-        console.log(error);
-    }
-}
-
-export const formularioActualizarUsuario = async (req, res) => {
-    try {
-        const id = req.params.id;
-        const usuario = await UserModel.findById(id);
-        res.render('Actividades/editarActividad', {usuario: usuario});
-    } catch (error) {
-        // res.status(400).json({mensaje: error.message});
-        console.log(error);
-    }
-}
-
-export const consultarUsuarios = async (req, res) => {
-    try{
         const data = await UserModel.find();
-        //console.log(data);
-        res.render('Usuarios/listaUsuarios', { usuarios: data });
-        console.log("Usuarios obtenidos correctamente");
-    }
-    catch(error){
-        // res.status(400).json({mensaje: error.message});
-        console.log("Error al obtener usuarios");
-    }
-}
-
-
-export const vUsuarios = async (req, res) => {
-    try {
-        const usuarios = await UserModel.find();
-       //console.log(usuarios);
-        res.render('Usuarios/usuarios', {usuarios: usuarios, titulo: "Consultar"});
+        res.render('Usuarios/usuarios', { usuarios: data });
     } catch (error) {
         console.log(error);
     }
 }
 
 export const iniciarSesion = async (req, res) => {
-    console.log('GET /');
     try {
         res.render('Usuarios/iniciarSesion');
     } catch (error) {
@@ -159,17 +107,44 @@ export const recuperarCuenta = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { correo, password } = req.body;
         console.log('POST /login');
         console.log('Request body:', req.body); // Debugging statement  
 
-        // Simulate authentication (replace with your logic)
-        if (username === 'admin' && password === 'admin') {
-            res.redirect('/usuarios');
+        const user = await UserModel.findOne({ correo, isAdmin: true });
+        if (user) {
+            console.log('User found:', user); // Debugging statement
+            console.log('Plain text password:', password); // Debugging statement
+            console.log('Hashed password from DB:', user.password); // Debugging statement
+
+            const isMatch = await bcrypt.compare(password, user.password);
+            console.log('Password match:', isMatch); // Debugging statement
+
+            if (isMatch) {
+                // Set the session
+                req.session.user = { 
+                    nombre: user.nombre, 
+                    apellido: user.apellido, 
+                    correo: user.correo, 
+                    isAdmin: user.isAdmin 
+                };
+                res.redirect('/usuarios');
+            } else {
+                res.render('Usuarios/iniciarSesion', { error: true });
+            }
         } else {
             res.render('Usuarios/iniciarSesion', { error: true });
         }
     } catch (error) {   
+        console.log(error);
+    }
+}
+
+export const logout = async (req, res) => {
+    try {
+        req.session.destroy();
+        res.redirect('/');
+    } catch (error) {
         console.log(error);
     }
 }

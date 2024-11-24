@@ -28,8 +28,10 @@
         </div>
         <% if (typeof autenticado === 'undefined' || autenticado) { %>
             <div class="user">
-                <span>Usuario 123</span>
-                <div class="user-circle"></div>
+                <span><%= username %></span>
+                <a href="/logout">
+                    <div class="user-circle"></div>
+                </a>
             </div>
         <% } %>
 
