@@ -99,7 +99,7 @@ html, body {
     }
 
     .login {
-        width: 90%; /* Make the login container take 90% of the screen width */
+        width:100%; /* Make the login container take 90% of the screen width */
         height: auto; /* Adjust height to auto for better responsiveness */
         padding: 2rem; /* Adjust padding for smaller screens */
     }
