@@ -3,12 +3,25 @@ import session from 'express-session';
 import { __dirname } from "./util/__dirname.js";
 import { join } from "path";
 import crypto from 'crypto';
+import multer from 'multer';
 
 import { connectDB } from "./config/database.js";
-import { consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, inhabilitarActividad, habilitarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo } from "./controllers/activityController.js";
+import { consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, inhabilitarActividad, habilitarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo, subirImagen} from "./controllers/activityController.js";
 import * as userController from "./controllers/userController.js";
 
 const server = express();
+
+// ---------- Configuración de multer ----------
+const upload = multer({ dest: 'assets/uploads/',
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+            cb(null, true);
+        } else {
+            return cb(new Error('Invalid mime type'));
+        }
+    }
+ });
+
 // ---------- Conexion a la base de datos ----------
 connectDB().then(() => { console.log('Base de datos conectada'); }).catch((error) => {
     console.log(error);
@@ -48,6 +61,8 @@ function isAuthenticated(req, res, next) {
 server.get('/', userController.iniciarSesion);
 server.get('/recuperarCuenta', userController.recuperarCuenta);
 server.post('/login', userController.login);
+server.post('/actividades/subirImagen', subirImagen);
+
 
 // Apply the isAuthenticated middleware to all other routes
 server.use(isAuthenticated);
@@ -66,6 +81,7 @@ server.get('/actividades/actualizar/:id', formularioActualizarActividad);
 server.post('/actividades/inhabilitar/:id', inhabilitarActividad);
 server.post('/actividades/habilitar/:id', habilitarActividad);
 server.get('/actividades/:titulo', consultarActividadesTitulo);
+// server.post('/actividades/imagen', upload.single('imagen'), guardarImagenActividad);
 
 server.post('/usuarios/crear', userController.crearUsuario);
 server.get('/usuarios/crear', userController.renderCrearUsuario);
@@ -75,8 +91,6 @@ server.get('/usuarios', userController.getUsuarios);
 
 // Logout route
 server.get('/logout', userController.logout);
-
-// La última ara que se muestre un título diferente dependiendo de si la acción que se quiera hacer. Por ejemplo, si se quiere consultar, se muestra "Consultar actividades", si se quiere actualizar, se muestra "Actualizar actividad", etc.
 
 // ---------- Configuración del motor de plantillas ----------
 server.set('view engine', 'ejs');

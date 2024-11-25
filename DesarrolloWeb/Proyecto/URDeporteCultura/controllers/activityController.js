@@ -1,20 +1,64 @@
 import { ActivityModel } from "../models/activityModel.js";
+import fs from 'fs';
+import multer from 'multer';
 
 export const crearActividad = async (req, res) => {
-    try{
-        const data = req.body;
-        console.log(data);
-        await ActivityModel.create(data);
-        const actividades = await ActivityModel.find();
-        res.json(actividades);
-        res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
-        // res.status(200).json(actividades);
-        console.log("Actividad creada correctamente");
-    }
-    catch(error){
-        console.log(error);
-        // res.status(400).json({mensaje: error.message, actividades});
-    }
+    var upload = multer({
+        dest: 'assets/uploads/',
+        fileFilter: (req, file, cb) => {
+            if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+                cb(null, true);
+            } else {
+                return cb({message: 'Ups! Subiste un archivo no permitido. Por favor, selecciona una imagen'}, null);
+            }
+        }
+    }).single('imagen');
+
+    upload(req, res, async function(err) {
+        if (err) {
+            console.log(err.message);
+            return res.render('Actividades/crearActividad', {
+                nombre: req.body.nombre || "",
+                grupo: req.body.grupo || "",
+                fecha: req.body.fecha || "",
+                ubicacion: req.body.ubicacion || "",
+                resultado: req.body.resultado || "",
+                imagen: null,
+                mensajeAlerta: err.message,
+            });
+        } else{
+            if (!req.body.nombre || !req.body.grupo || req.body.grupo === "0" || !req.body.fecha) {
+                const mensajeAlerta = "Por favor, completa todos los campos obligatorios, marcados con *.";
+                return res.render("Actividades/crearActividad", {
+                    nombre: req.body.nombre || "",
+                    grupo: req.body.grupo || "",
+                    fecha: req.body.fecha || "",
+                    ubicacion: req.body.ubicacion || "",
+                    resultado: req.body.resultado || "",
+                    imagen: null,
+                    mensajeAlerta,
+                });
+            }
+            try{
+                const data = req.body;
+                console.log(data);
+                if(req.file != undefined){
+                    console.log(req.file);
+                    const imagen = saveImage(req.file);
+                    data.imagen = imagen;
+                }
+                await ActivityModel.create(data);
+                const actividades = await ActivityModel.find();
+                res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
+                // res.status(200).json(actividades);
+                console.log("Actividad creada correctamente");
+            }
+            catch(error){
+                console.log(error);
+                res.status(400).json({mensaje: error.message, actividades});
+            }
+        }
+    });
 }
 
 export const consultarActividades = async (req, res) => {
@@ -59,6 +103,7 @@ export const obtenerActividadPorId = async (req, res) => {
 export const actualizarActividad = async (req, res) => {
     try {
         const dataUpdated = req.body;
+        
         await ActivityModel.updateOne({_id: req.body.idActividad}, {
             nombre: dataUpdated.nombre, 
             grupo: dataUpdated.grupo, 
@@ -105,7 +150,7 @@ export const habilitarActividad = async (req, res) => {
 }
 
 export const formularioRegistroActividad = (req, res) => {
-    res.render('Actividades/crearActividad');
+    res.render('Actividades/crearActividad', {nombre: null, grupo: null, fecha: null, ubicacion: null, resultado: null, imagen: null, mensajeAlerta: null});
 }
 
 export const formularioActualizarActividad = async (req, res) => {
@@ -117,4 +162,53 @@ export const formularioActualizarActividad = async (req, res) => {
         // res.status(400).json({mensaje: error.message});
         console.log(error);
     }
+}
+
+// Subir imagen usando multer
+function saveImage(file) {
+    let newPath = `assets/uploads/${file.originalname}`;
+    console.log(newPath);
+    console.log(file.path);
+    fs.renameSync(file.path, newPath);
+    newPath = `/uploads/${file.originalname}`;
+    return newPath;
+}
+
+export const subirImagen = (req, res) => {
+    var upload = multer({
+        dest: 'assets/uploads/',
+        fileFilter: (req, file, cb) => {
+            if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+                cb(null, true);
+            } else {
+                return cb({message: 'Invalid mime type'}, null);
+            }
+        }
+    }).single('imagen');
+
+    upload(req, res, async function(err) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json({mensaje: err.message});
+        } else{
+            try{
+                const data = req.body;
+                console.log(data);
+                if(req.file != undefined){
+                    console.log(req.file);
+                    const imagen = saveImage(req.file);
+                    data.imagen = imagen;
+                }
+                await ActivityModel.create(data);
+                const actividades = await ActivityModel.find();
+                // res.render('Actividades/consultarActividades', {actividades: actividades, titulo: "Consultar"});
+                res.status(200).json(actividades);
+                console.log("Actividad creada correctamente");
+            }
+            catch(error){
+                console.log(error);
+                res.status(400).json({mensaje: error.message, actividades});
+            }
+        }
+    });
 }
