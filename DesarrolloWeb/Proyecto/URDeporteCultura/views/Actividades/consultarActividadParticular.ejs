@@ -9,7 +9,11 @@
             <% }%>
             <form action="/actividades/actualizar/<%= actividad._id %>">
                 <div class="formContent">
-                    <div class="formImagen" id="formImagenLleno"></div>
+                    <% if(actividad.imagen) { %>
+                        <div class="formImagen"style="background: url(<%= actividad.imagen%>) lightgray 50% / cover no-repeat;"></div>
+                    <% } else { %>
+                        <div class="formImagen" id="formImagenLleno"></div>
+                    <% } %>
                     <div class="formCampos">
                         <div class="formText" id="formFecha">
                             <label for="fechaActividad">Fecha de la actividad</label><br>
@@ -29,12 +33,12 @@
                     <input type="submit" class="formButton" id="formButtonAzul" value="Editar">
                     </form>
                     <% if (actividad.estado){ %>
-                        <form action="/actividades/inhabilitar/<%= actividad._id %>" method="post">
-                            <input type="submit" class="formButton" id="formButtonRojo" value="Inhabilitar">
+                        <form action="/actividades/inhabilitar/<%= actividad._id %>" method="post" enctype="multipart/form-data" id="form">
+                            <input type="button" class="formButton" id="formButtonRojoInhabilitar" value="Inhabilitar">
                         </form>
                     <% } else { %>
-                        <form action="/actividades/habilitar/<%= actividad._id %>" method="post">
-                            <input type="submit" class="formButton" id="formButtonRojo" value="Habilitar">
+                        <form action="/actividades/habilitar/<%= actividad._id %>" method="post" enctype="multipart/form-data" id="form">
+                            <input type="button" class="formButton" id="formButtonRojoInhabilitar" value="Habilitar">
                         </form>
                     <% } %>
                 </div>

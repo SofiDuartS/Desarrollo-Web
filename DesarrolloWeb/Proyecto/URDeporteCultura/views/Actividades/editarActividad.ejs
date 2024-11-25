@@ -4,12 +4,17 @@
      <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Modificar Actividad</h1>
-            <form action="/actividades/actualizar" method="post">
+            <form action="/actividades/actualizar" method="post" enctype="multipart/form-data" id="form">
                 <input type="hidden" name="idActividad" value="<%= actividad._id %>">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square" id="formImagenLleno"></div>
-                        <input type="file" id="imagenActividad" style="display: none;">
+                        <div class="square"id="preview"></div>
+                        <% if (actividad.imagen) { %>
+                            <script>
+                                document.getElementById('preview').style.backgroundImage = "url('<%= actividad.imagen %>')";
+                            </script>
+                        <% } %>
+                        <input type="file" id="imagenActividad" name="imagen" style="display: none;">
                         <label for="imagenActividad" id="customUploadText">
                             <p>Elegir imagen</p>
                         </label>
@@ -83,7 +88,7 @@
                     </div>
                 </div>
                 <div class="formButtonsContainer">
-                    <input type="submit" class="formButton" id="formButtonAzul" value="Guardar">
+                    <input type="button" class="formButton" id="formButtonAzulEditar" value="Guardar">
                     </form>
                     <form action="/actividades">
                         <input type="submit" class="formButton" id="formButtonRojo" value="Cancelar">
@@ -93,5 +98,16 @@
      
         </div>
     </div>
-</body>
-</html>
+
+    <script>
+        <% if(mensajeAlerta) {%>
+            Swal.fire({
+                html: `<p class="textoAlerta"> <%= mensajeAlerta %> </p>`,
+                confirmButtonText: "Volver",
+                customClass: {
+                    confirmButton: "button azul",
+                },
+            });
+        <% } %></script>
+
+        <%- include('../components/footer.ejs') -%>

@@ -17,6 +17,9 @@
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
+
+    box-shadow: 0px 0px 0px 0rem #00000000;
+    padding: 1rem;
 }
 
 .button a{
@@ -46,6 +49,18 @@
     background-color: #9f0819;
 }
 
+.rojo{
+    border: none;
+    background-color: var(--UR---Rojo);
+    transition: background-color 0.5s ease-out;
+    text-align: center;
+}
+
+.rojo:hover{
+    background-color: #9f0819;
+    text-decoration: underline;
+}
+
 #botonAzul{
     background-color: var(--UR---Azul);
     transition: background-color 0.5s ease-out;
@@ -53,6 +68,18 @@
 
 #botonAzul:hover{
     background-color: #21016b;
+}
+
+.azul{
+    border: none;
+    background-color: var(--UR---Azul);
+    transition: background-color 0.5s ease-out;
+    text-align: center;
+}
+
+.azul:hover{
+    background-color: #21016b;
+    text-decoration: underline;
 }
 
 #botonBlanco{
@@ -104,7 +131,7 @@
     text-decoration: underline;
 }
 
-#formButtonAzul{
+#formButtonAzul, #formButtonAzulEnviar, #formButtonAzulEditar{
     background-color: var(--UR---Azul);
     transition: background-color 0.5s ease-out;
 }
@@ -114,7 +141,7 @@
     cursor: pointer;
 }
 
-#formButtonRojo{
+#formButtonRojo, #formButtonRojoInhabilitar{
     background-color: var(--UR---Rojo);
     transition: background-color 0.5s ease-out;
 }
