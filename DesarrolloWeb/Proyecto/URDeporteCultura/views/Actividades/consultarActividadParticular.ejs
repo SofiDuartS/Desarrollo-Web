@@ -9,7 +9,7 @@
             <% }%>
             <form action="/actividades/actualizar/<%= actividad._id %>">
                 <div class="formContent">
-                    <div class="formImagen" id="formImagenLleno"></div>
+                    <div class="formImagen"style="background: url(<%= actividad.imagen || '/img/natacion.jpg'%>) lightgray 50% / cover no-repeat;"></div>
                     <div class="formCampos">
                         <div class="formText" id="formFecha">
                             <label for="fechaActividad">Fecha de la actividad</label><br>
