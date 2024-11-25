@@ -4,12 +4,19 @@
     <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Modificar Usuario</h1>
-            <form action="/usuarios/actualizar" method="post">
+            <form action="/usuarios/actualizar" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idUsuario" value="<%= usuario._id %>">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square" id="XXXXXXX"></div>
-                        <input type="file" id="imagenActividad" style="display: none;">
+                        <div class="square" id="preview"></div>
+                        <% if (usuario.imagen) { %>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    document.getElementById('preview').style.backgroundImage = "url('/uploads/<%= usuario.imagen.split('/').pop() %>')";
+                                });
+                            </script>
+                        <% } %>
+                        <input type="file" id="imagenActividad" name="imagen" style="display: none;">
                         <label for="imagenActividad" id="customUploadText">
                             <p>Elegir imagen</p>
                         </label>
