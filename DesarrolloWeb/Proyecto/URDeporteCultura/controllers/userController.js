@@ -6,7 +6,6 @@ export const crearUsuario = async (req, res) => {
         const data = req.body;
         console.log(data);
         await UserModel.create(data);
-        const usuarios = await UserModel.find();
         res.redirect('/usuarios');
         console.log("Usuario creado correctamente");
     }
