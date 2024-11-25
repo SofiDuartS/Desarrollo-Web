@@ -103,7 +103,7 @@ body {
 }
 
 #formImagenLleno{
-    background: url(../img/natacion.jpg) 50% / cover no-repeat;
+    background-color: #B9B9B9;
     height: 21.875rem;
     /*La línea anterior tiene que ser con base de datos!*/
 }

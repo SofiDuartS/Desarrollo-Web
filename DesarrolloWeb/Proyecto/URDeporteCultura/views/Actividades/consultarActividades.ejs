@@ -23,7 +23,11 @@
                                 <% } else { %>
                                 <div class="card">
                                 <% } %>
-                                    <div class="cardImage"style="background: url(<%= actividad.imagen || '/img/natacion.jpg'%>) lightgray 50% / cover no-repeat;"></div>
+                                    <% if(actividad.imagen) { %>
+                                    <div class="cardImage"style="background: url(<%= actividad.imagen %>) lightgray 50% / cover no-repeat;"></div>
+                                    <% } else { %>
+                                    <div class="cardImage"></div>
+                                    <% } %>
                                     <div class="cardContent">
                                         <a href="/actividades/actividad/<%= actividad._id %>">
                                             <h3><%= actividad.nombre %></h3>

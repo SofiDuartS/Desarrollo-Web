@@ -50,7 +50,7 @@ html {
     height: 10.75rem;
     align-self: stretch;
     border-radius: 1.25rem 1.25rem 0rem 0rem;
-    background: url(../img/ultimate.jpg) lightgray 50% / cover no-repeat;
+    background-color: #B9B9B9;
 }
 
 .cardContent{

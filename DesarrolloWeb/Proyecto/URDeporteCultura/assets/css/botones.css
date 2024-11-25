@@ -131,7 +131,7 @@
     text-decoration: underline;
 }
 
-#formButtonAzul, #formButtonAzulEnviar{
+#formButtonAzul, #formButtonAzulEnviar, #formButtonAzulEditar{
     background-color: var(--UR---Azul);
     transition: background-color 0.5s ease-out;
 }
@@ -141,7 +141,7 @@
     cursor: pointer;
 }
 
-#formButtonRojo{
+#formButtonRojo, #formButtonRojoInhabilitar{
     background-color: var(--UR---Rojo);
     transition: background-color 0.5s ease-out;
 }
