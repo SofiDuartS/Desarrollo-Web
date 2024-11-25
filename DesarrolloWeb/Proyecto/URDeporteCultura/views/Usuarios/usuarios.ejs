@@ -8,6 +8,7 @@
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Correo</th>
@@ -20,6 +21,13 @@
                 <% usuarios.forEach(usuario => { %>
                     <% if (!usuario.isAdmin) { %>
                         <tr>
+                            <td>
+                                <% if (usuario.imagen) { %>
+                                    <img src="/<%= usuario.imagen.split('assets/').pop() %>" alt="Foto de perfil" class="user-image">
+                                <% } else { %>
+                                    <img src="/img/avatar2.png" alt="Default Profile Picture" class="user-image">
+                                <% } %>
+                            </td>
                             <td><%= usuario.nombre %></td>
                             <td><%= usuario.apellido %></td>
                             <td><%= usuario.correo %></td>
@@ -54,7 +62,7 @@
     <!-- Initialize DataTable -->
     <script>
     $(document).ready(function () {
-        new DataTable('#example');
+        new DataTable('#example', {"order": [[1, "asc"]]});
     });
     </script>
 </body>
