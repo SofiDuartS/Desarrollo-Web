@@ -4,6 +4,17 @@
     <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Crear Usuario</h1>
+            <% if (typeof mensajeAlerta !== 'undefined') { %>
+                <script>
+                    Swal.fire({
+                        html: `<p class="textoAlerta"> <%= mensajeAlerta %> </p>`,
+                        confirmButtonText: "Volver",
+                        customClass: {
+                            confirmButton: "button azul",
+                        },
+                    });
+                </script>
+            <% } %>
             <form action="/usuarios/crear" method="post" enctype="multipart/form-data">
                 <div class="formContent">
                     <div class="formImagen">

@@ -28,7 +28,7 @@ export const crearUsuario = async (req, res) => {
     upload.single('imagen')(req, res, async function(err) {
         if (err) {
             console.log(err.message);
-            return res.render('Usuarios/crearUsuario', {
+            return res.status(404).render('Usuarios/crearUsuario', {
                 nombre: req.body.nombre || "",
                 apellido: req.body.apellido || "",
                 correo: req.body.correo || "",
@@ -49,7 +49,7 @@ export const crearUsuario = async (req, res) => {
                 console.log("Usuario creado correctamente");
             } catch (error) {
                 console.log(error);
-                res.render('Usuarios/crearUsuario', {
+                res.status(404).render('Usuarios/crearUsuario', {
                     nombre: req.body.nombre || "",
                     apellido: req.body.apellido || "",
                     correo: req.body.correo || "",
@@ -88,8 +88,9 @@ export const actualizarUsuario = async (req, res) => {
     upload.single('imagen')(req, res, async function(err) {
         if (err) {
             console.log('Multer error:', err.message);
-            return res.render('Usuarios/consultarUsuario', {
-                usuario: req.body,
+            const usuario = await UserModel.findById(req.body.idUsuario);
+            return res.status(404).render('Usuarios/consultarUsuario', {
+                usuario: usuario,
                 mensajeAlerta: err.message,
             });
         } else {
@@ -101,7 +102,10 @@ export const actualizarUsuario = async (req, res) => {
                 const userExists = await UserModel.findById(idUsuario);
                 if (!userExists) {
                     console.log('User not found');
-                    return res.status(404).json({ mensaje: 'User not found' });
+                    return res.status(404).render('Usuarios/consultarUsuario', {
+                        usuario: req.body,
+                        mensajeAlerta: 'User not found',
+                    });
                 }
 
                 // Build the update object conditionally
@@ -126,7 +130,10 @@ export const actualizarUsuario = async (req, res) => {
 
                 if (updateResult.acknowledged === false) {
                     console.log('Update not acknowledged');
-                    return res.status(500).json({ mensaje: 'Update not acknowledged' });
+                    return res.status(500).render('Usuarios/consultarUsuario', {
+                        usuario: req.body,
+                        mensajeAlerta: 'Update not acknowledged',
+                    });
                 }
 
                 if (updateResult.nModified === 0) {
@@ -137,7 +144,11 @@ export const actualizarUsuario = async (req, res) => {
                 res.redirect('/usuarios'); // Redirect to the desired page after successful update
             } catch (error) {
                 console.log('Error al modificar usuario:', error.message);
-                res.status(400).json({ mensaje: error.message });
+                const usuario = await UserModel.findById(req.body.idUsuario);
+                res.status(400).render('Usuarios/consultarUsuario', {
+                    usuario: usuario,
+                    mensajeAlerta: error.message,
+                });
             }
         }
     });
