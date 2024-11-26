@@ -42,7 +42,7 @@ export const crearUsuario = async (req, res) => {
                 const data = req.body;
                 console.log(data);
                 if (req.file) {
-                    data.imagen = req.file.path.replace('assets/', '');
+                    data.imagen = `/uploads/${req.file.filename}`;
                     console.log('Imagen:', data.imagen); // Debugging statement
                 }
                 await UserModel.create(data);
@@ -119,7 +119,7 @@ export const actualizarUsuario = async (req, res) => {
                 };
 
                 if (req.file) {
-                    updateData.imagen = req.file.path.replace('assets/', '');
+                    updateData.imagen = `/uploads/${req.file.filename}`;
                     console.log('Imagen actualizada:', updateData.imagen); // Debugging statement
                 }
 
