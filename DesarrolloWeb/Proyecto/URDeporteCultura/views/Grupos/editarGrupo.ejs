@@ -4,16 +4,20 @@
      <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Modificar Grupo</h1>
-            <form action="/grupos/actualizar" method="post">
+            <form action="/grupos/actualizar" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idGrupo" value="<%= grupo._id %>">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square" id="formImagenLleno"></div>
-                        <input type="file" id="imagenGrupo" style="display: none;">
+                        <% if (grupo.imagen) { %>
+                            <div class="square" id="formImagenLleno" style="background: url('<%= grupo.imagen %>') center / cover no-repeat;"></div>
+                        <% } else { %>
+                            <div class="square" id="formImagenLleno" style="background: lightgray;"></div>
+                        <% } %>
+                        <input type="file" id="imagenGrupo" name="imagen" style="display: none;">
                         <label for="imagenGrupo" id="customUploadText">
-                            <p>Elegir imagen</p>
+                            <p>Elegir nueva imagen</p>
                         </label>
-                    </div>
+                    </div>                                        
                     <div class="formCampos">
                         <div class="formText">
                             <label for="nombreGrupo">Nombre del grupo</label><br>

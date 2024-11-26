@@ -63,6 +63,7 @@ server.get('/', userController.iniciarSesion);
 server.get('/recuperarCuenta', userController.recuperarCuenta);
 server.post('/login', userController.login);
 server.post('/actividades/subirImagen', subirImagen);
+server.post('/grupos/subirImagen', subirImagen)
 
 
 // Apply the isAuthenticated middleware to all other routes
