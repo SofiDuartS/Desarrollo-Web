@@ -23,7 +23,7 @@
                         <tr>
                             <td>
                                 <% if (usuario.imagen) { %>
-                                    <img src="/<%= usuario.imagen.split('assets/').pop() %>" alt="Foto de perfil" class="user-image">
+                                    <img src="/<%= usuario.imagen %>" alt="Foto de perfil" class="user-image">
                                 <% } else { %>
                                     <img src="/img/avatar2.png" alt="Default Profile Picture" class="user-image">
                                 <% } %>
