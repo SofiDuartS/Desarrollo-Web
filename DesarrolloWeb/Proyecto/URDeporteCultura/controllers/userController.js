@@ -42,7 +42,8 @@ export const crearUsuario = async (req, res) => {
                 const data = req.body;
                 console.log(data);
                 if (req.file) {
-                    data.imagen = req.file.path;
+                    data.imagen = req.file.path.replace('assets/', '');
+                    console.log('Imagen:', data.imagen); // Debugging statement
                 }
                 await UserModel.create(data);
                 res.redirect('/usuarios');
@@ -118,7 +119,8 @@ export const actualizarUsuario = async (req, res) => {
                 };
 
                 if (req.file) {
-                    updateData.imagen = req.file.path;
+                    updateData.imagen = req.file.path.replace('assets/', '');
+                    console.log('Imagen actualizada:', updateData.imagen); // Debugging statement
                 }
 
                 const updateResult = await UserModel.updateOne(
@@ -202,7 +204,7 @@ export const login = async (req, res) => {
                     correo: user.correo, 
                     isAdmin: user.isAdmin 
                 };
-                res.redirect('/usuarios');
+                res.redirect('/index');
             } else {
                 res.render('Usuarios/iniciarSesion', { error: true });
             }
