@@ -4,12 +4,17 @@
     <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Crear Nuevo Grupo</h1>
-            <form action="/grupos/crear" method="post">
+            <form action="/grupos/crear" method="post" enctype="multipart/form-data">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square"></div>
-                        <input type="file" id="imagenGrupo" name="imagen" style="display: none;">
-                        <label for="imagenGrupo" id="customUploadText">
+                        <div class="square" id="preview"></div>
+                        <% if (imagen) { %>
+                            <script>
+                                document.getElementById('preview').style.backgroundImage = "url('<%= imagen %>')";
+                            </script>
+                        <% } %>
+                        <input type="file" id="imagenActividad" name = "imagen" style="visibility: hidden; position: absolute;">
+                        <label for="imagenActividad" id="customUploadText">
                             <p>Elegir imagen</p>
                         </label>
                     </div>
@@ -33,7 +38,7 @@
                             </select>
                         </div>
                         <div class="formText" id="formFecha">
-                            <label for="diaPractica">Día de la práctica</label><br>
+                            <label for="diaPractica">Horarios de práctica</label><br>
                             <input type="text" id="diaPractica" name="diaspractica" required placeholder="Días semanales de la práctica">
                         </div>
                         <div class="formText" id="formLugar">
