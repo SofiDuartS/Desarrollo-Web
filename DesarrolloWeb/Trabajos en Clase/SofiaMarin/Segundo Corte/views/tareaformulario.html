@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <link rel="stylesheet", type="text/css", href="../assets/css/">
+    <style>
+        body {
+            background-color: lightblue;
+        }
+        form {
+            margin-left: 50px;  /* Empuja el contenido hacia la derecha */
+            margin-right: 50px; /* Establece el espacio desde la derecha */
+            width: 550px;       /* Puedes definir un ancho para el formulario si lo deseas */
+            text-align: left;    /* Alinea el contenido dentro del formulario a la izquierda si es necesario */
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center" style="color:blue">¿Cuanto conoces de Stitch?</h1>
+    <h4 align="center">Realiza este pequeño quiz para saber que tanto sabes sobre Stitch</h4>
+</body>
+    <center>
+    <img src="../assets/images/stitch.jpg" align="center" alt="stitch"> <br/><br/>
+        <form name="form" action="submit" method="post" target="_blank"> <!--IMPORTANTE: Action= Submit cuando te manden datos, href cuando se necesite abrir otro enlace 
+            Method= se refiere a como se almacenara la información, esta puede ser privada o publica. Target= para establecer si se quiere abrir dicha pestaña en una nueva o sobre la misma-->
+        <!-- Input de Nombre -->     
+   <label for="name"><strong> Tu nombre: </strong></label> <!-- Nombre de la casilla, se pueden usar los estilos de texto -->
+   <br><br/>
+   <input type="text" name="nombreUsuario" id="name"> <!--El id debe coincidir con el for de la linea anterior  -->
+   <br/><br/>
+
+    <!-- Lista para escoger unica opción -->    
+   <label for="escoger"><strong>1. ¿Quien es el creador de Stitch?</strong></label> <br/><br/>
+   <input type="radio" name="información_uno">Mr. Ronald Whishman <br/><br/>
+   <input type="radio" name="información_dos">Dc. Ferney Smith <br/><br/>
+   <input type="radio" name="información_dos">Sr. Luis James <br/><br/>
+   <input type="radio" name="información_dos">Dr. Jumba Jookiba <br/><br/>         
+     <!-- Lista para escoger unica opción -->    
+   <label for="escoger"><strong>2. ¿Cúal es el nombre original de Stitch?</strong></label> <br/><br/>
+   <input type="radio" name="información_uno">Truco 262 <br/><br/>
+   <input type="radio" name="información_dos">Prueba 77 <br/><br/>
+   <input type="radio" name="información_dos">Experimento 626 <br/><br/>
+   <input type="radio" name="información_dos">Intento 24 <br/><br/>    
+
+   <label for="pelicula"><strong>3. ¿Cúal es el nombre de la pelicula que protagoniza Stitch? </strong></label> <!-- Nombre de la casilla, se pueden usar los estilos de texto -->
+   <br><br/>
+   <input type="text" name="nombrePelicula" id="pelicula"> <!--El id debe coincidir con el for de la linea anterior  -->
+   <br/><br/>     
+   
+    <!-- Input de escoger varias opciones -->
+   <label for="escoger"><strong>4. ¿Seleccione los valores que aprendio Stitch en la tierra?</strong></label> <br/><br/> <!--De este modo se logran escoger varias opciones gracias a type="checkbox"-->
+   <input type="checkbox" name="información_uno" id="ejemplo_a" value="ejemplo_a">  <!--forma 1 de ahcerlo-->
+   <label for="ejemplo_a">La familia</label> <br/><br/>
+   <input type="checkbox" name="información_dos" id="ejemplo_b" value="ejemplo_b">
+   <label for="ejemplo_b">La amistad</label> <br/><br/>
+   <input type="checkbox" name="información_tres" id="ejemplo_c" value="ejemplo_c">
+   <label for="ejemplo_c">El irrespeto</label> <br/><br/>
+   <input type="checkbox" name="información_cuat" id="ejemplo_d" value="ejemplo_d">
+   <label for="ejemplo_d">La crueldad</label> <br/><br/>
+
+   <label for="textarea"><strong>5. Realiza una leve descripción de Stitch</strong></label>
+   <br><br/>
+   <textarea name="textarea" rows="3" cols="30"></textarea>
+
+   <br/><br/><br/><br/>
+   
+   <label for="desplegable"><strong> 6. ¿Cúal es el cuento favorito de Stitch? </strong> </label>          
+   <select name="desplegable">
+        <option value="1">-Seleccione-</option>
+        <option value="1">Blanca Nieves y los 7 Enanitos</option>
+        <option value="1">El Patito Feo</option>
+        <option value="1">Caperucita Roja</option>
+    </select>
+    <br/><br/><br/><br/>
+    <input type="submit" value="Enviar Respuestas">
+    <br/><br/><br/><br/>
+
+       </form> 
+    </center>
+    
+</body>
+</html>

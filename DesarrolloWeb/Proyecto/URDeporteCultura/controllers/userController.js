@@ -1,18 +1,66 @@
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/userModel.js';
+import multer from 'multer';
+
+// Configure storage options
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'assets/uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+
+// Configure file filtering
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === "image/png" || file.mimetype === "image/jpg" || file.mimetype === "image/jpeg") {
+        cb(null, true);
+    } else {
+        cb(new Error('Tipo de archivo inválido'), false);
+    }
+};
+
+// Initialize Multer with storage and file filter
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 export const crearUsuario = async (req, res) => {
-    try{
-        const data = req.body;
-        console.log(data);
-        await UserModel.create(data);
-        const usuarios = await UserModel.find();
-        res.redirect('/usuarios');
-        console.log("Usuario creado correctamente");
-    }
-    catch(error){
-        console.log(error);
-    }
+    upload.single('imagen')(req, res, async function(err) {
+        if (err) {
+            console.log(err.message);
+            return res.status(404).render('Usuarios/crearUsuario', {
+                nombre: req.body.nombre || "",
+                apellido: req.body.apellido || "",
+                correo: req.body.correo || "",
+                ids: req.body.ids || "",
+                estado: req.body.estado || true,
+                imagen: null,
+                mensajeAlerta: err.message,
+            });
+        } else {
+            try {
+                const data = req.body;
+                console.log(data);
+                if (req.file) {
+                    data.imagen = req.file.path;
+                }
+                await UserModel.create(data);
+                res.redirect('/usuarios');
+                console.log("Usuario creado correctamente");
+            } catch (error) {
+                console.log(error);
+                res.status(404).render('Usuarios/crearUsuario', {
+                    nombre: req.body.nombre || "",
+                    apellido: req.body.apellido || "",
+                    correo: req.body.correo || "",
+                    ids: req.body.ids || "",
+                    estado: req.body.estado || true,
+                    imagen: null,
+                    mensajeAlerta: "Error al crear el usuario",
+                });
+            }
+        }
+    });
 }
 
 export const renderCrearUsuario = (req, res) => {
@@ -27,6 +75,7 @@ export const obtenerUsuario = async (req, res) => {
     try {
         const id = req.params.id;
         const userId = await UserModel.findById(id);
+        console.log('Usuario obtenido:', userId); // Debugging statement    
         res.render('Usuarios/consultarUsuario', { usuario: userId });
         console.log("Usuario obtenido correctamente"); 
     } catch (error) {
@@ -36,48 +85,73 @@ export const obtenerUsuario = async (req, res) => {
 
 
 export const actualizarUsuario = async (req, res) => {
-    try {
-        const { idUsuario, nombre, apellido, correo, ids, estado } = req.body;
-        console.log('Request body:', req.body); // Debugging statement
+    upload.single('imagen')(req, res, async function(err) {
+        if (err) {
+            console.log('Multer error:', err.message);
+            const usuario = await UserModel.findById(req.body.idUsuario);
+            return res.status(404).render('Usuarios/consultarUsuario', {
+                usuario: usuario,
+                mensajeAlerta: err.message,
+            });
+        } else {
+            try {
+                const { idUsuario, nombre, apellido, correo, ids, estado } = req.body;
+                console.log('Request body:', req.body); // Debugging statement
 
-        // Check if the user exists before updating
-        const userExists = await UserModel.findById(idUsuario);
-        if (!userExists) {
-            console.log('User not found');
-            return res.status(404).json({ mensaje: 'User not found' });
+                // Check if the user exists before updating
+                const userExists = await UserModel.findById(idUsuario);
+                if (!userExists) {
+                    console.log('User not found');
+                    return res.status(404).render('Usuarios/consultarUsuario', {
+                        usuario: req.body,
+                        mensajeAlerta: 'User not found',
+                    });
+                }
+
+                // Build the update object conditionally
+                const updateData = {
+                    ...(nombre && { nombre }),
+                    ...(apellido && { apellido }),
+                    ...(correo && { correo }),
+                    ...(ids && { ids }),
+                    ...(estado !== undefined && { estado }) // Conditionally include estado
+                };
+
+                if (req.file) {
+                    updateData.imagen = req.file.path;
+                }
+
+                const updateResult = await UserModel.updateOne(
+                    { _id: idUsuario },
+                    { $set: updateData }
+                );
+
+                console.log('Update result:', updateResult); // Debugging statement
+
+                if (updateResult.acknowledged === false) {
+                    console.log('Update not acknowledged');
+                    return res.status(500).render('Usuarios/consultarUsuario', {
+                        usuario: req.body,
+                        mensajeAlerta: 'Update not acknowledged',
+                    });
+                }
+
+                if (updateResult.nModified === 0) {
+                    console.log('No documents were updated');
+                }
+
+                console.log('Usuario modificado correctamente');
+                res.redirect('/usuarios'); // Redirect to the desired page after successful update
+            } catch (error) {
+                console.log('Error al modificar usuario:', error.message);
+                const usuario = await UserModel.findById(req.body.idUsuario);
+                res.status(400).render('Usuarios/consultarUsuario', {
+                    usuario: usuario,
+                    mensajeAlerta: error.message,
+                });
+            }
         }
-
-        // Build the update object conditionally
-        const updateData = {
-            ...(nombre && { nombre }),
-            ...(apellido && { apellido }),
-            ...(correo && { correo }),
-            ...(ids && { ids }),
-            ...(estado !== undefined && { estado }) // Conditionally include estado
-        };
-
-        const updateResult = await UserModel.updateOne(
-            { _id: idUsuario },
-            { $set: updateData }
-        );
-
-        console.log('Update result:', updateResult); // Debugging statement
-
-        if (updateResult.acknowledged === false) {
-            console.log('Update not acknowledged');
-            return res.status(500).json({ mensaje: 'Update not acknowledged' });
-        }
-
-        if (updateResult.nModified === 0) {
-            console.log('No documents were updated');
-        }
-
-        console.log('Usuario modificado correctamente');
-        res.redirect('/usuarios'); // Redirect to the desired page after successful update
-    } catch (error) {
-        console.log('Error al modificar usuario:', error.message);
-        res.status(400).json({ mensaje: error.message });
-    }
+    });
 };
 
 export const getUsuarios = async (req, res) => {

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+    <h1 align="center" style="color:aquamarine">FORMULARIO</h1>
+    <br/><br/>
+    <center>
+        <form name="form" action="submit" method="post" target="_blank"> <!--IMPORTANTE: Action= Submit cuando te manden datos, href cuando se necesite abrir otro enlace 
+            Method= se refiere a como se almacenara la información, esta puede ser privada o publica. Target= para establecer si se quiere abrir dicha pestaña en una nueva o sobre la misma-->
+        <!-- Input de Nombre -->     
+   <label for="name"><strong> Nombre del usuario: </strong></label> <!-- Nombre de la casilla, se pueden usar los estilos de texto -->
+   <input type="text" name="nombreUsuario" id="name"> <!--El id debe coincidir con el for de la linea anterior  -->
+   <br/><br/>
+        <!-- Input de Contraseña -->
+   <label for="clave">Contraseña</label>
+   <input type="password" name="clave" id="clave"> <!-- existen muchos tipos de types de inputs, en este caso se uso contraseña y texto -->
+   <br/><br/>
+        <!-- Lista para escoger unica opción -->    
+   <label for="escoger">Escoge 1</label> <br/><br/>
+   <input type="radio" name="información_uno">1 <br/><br/>
+   <input type="radio" name="información_dos">2 <br/><br/>
+   <input type="radio" name="información_tres">3 
+   <br/><br/>         
+        <!-- Input de escoger varias opciones -->
+   <label for="escoger">Escoge 2</label> <br/><br/> <!--De este modo se logran escoger varias opciones gracias a type="checkbox"-->
+   <input type="checkbox" name="información_uno" id="ejemplo_a" value="ejemplo_a">  <!--forma 1 de ahcerlo-->
+   <label for="ejemplo_a">a</label> <br/><br/>
+
+   <input type="checkbox" name="información_uno" id="ejemplo_b"> b <br/><br/> <!--forma 2 de hacerlo-->
+   <input type="checkbox" name="información_uno" id="ejemplo_c" value="ejemplo_c"> c <br/><br/>
+   
+   <label for="desplegable"> Menú desplegable </label>          
+   <select name="desplegable">
+        <option value="1">Opcion1</option>
+        <option value="1">Opcion2</option>
+        <option value="1">Opcion3</option>
+    </select>
+
+    <br/><br/>
+
+    <label for="desplegableGroup"> Menú desplegable por grupos </label>
+    <select name ="desplegableGroup">
+        <optgroup label = "Grupo1">
+            <option selected value="1">Opcion1 Grupo1 </option>
+            <option value="2">Opcion2 Grupo1</option>
+        </optgroup>  
+        <optgroup label = "Grupo2">
+            <option value="3">Opcion1 Grupo2</option>
+            <option value="4">Opcion2 Grupo2</option>
+        </optgroup>    
+    </select>
+
+    <br/><br/>
+
+    <input type="hidden" name="datoOculto">
+    <label for="archivo">Archivo: </label>
+    <input type="file">
+
+    <br/><br/>
+
+    <!--
+    <label for="archivo"> Sube aquí tu archivo</label>
+    <input type="file" name="archivo">
+    -->
+
+    <br/><br/>
+
+    <label for="textarea">Text Area</label>
+    <textarea name="textarea" rows="3" cols="30"></textarea>
+
+    <br/><br/>
+
+    <input type="submit" value="Enviar">
+    <input type="submit" value="Cancelar">
+
+
+       </form> 
+    </center>
+    
+</body>
+</html>

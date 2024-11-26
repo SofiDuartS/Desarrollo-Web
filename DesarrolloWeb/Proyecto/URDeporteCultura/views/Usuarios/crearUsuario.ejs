@@ -4,33 +4,41 @@
     <div class="mainContainer">
         <div class="centeringContainer">
             <h1 class="tituloSeccion">Crear Usuario</h1>
-            <form action="/usuarios/crear" method="post">
+            <% if (typeof mensajeAlerta !== 'undefined') { %>
+                <script>
+                    Swal.fire({
+                        html: `<p class="textoAlerta"> <%= mensajeAlerta %> </p>`,
+                        confirmButtonText: "Volver",
+                        customClass: {
+                            confirmButton: "button azul",
+                        },
+                    });
+                </script>
+            <% } %>
+            <form action="/usuarios/crear" method="post" enctype="multipart/form-data">
                 <div class="formContent">
                     <div class="formImagen">
-                        <div class="square" id="XXXXXXX"></div>
-                        <input type="file" id="imagenActividad" style="display: none;">
+                        <div class="square" id="preview"></div>
+                        <input type="file" id="imagenActividad" name="imagen" style="display: none;">
                         <label for="imagenActividad" id="customUploadText">
                             <p>Elegir imagen</p>
                         </label>
                     </div>
                     <div class="formCampos">
                         <div class="formText">
-                            <label for="nombreUsuario">Nombre del usuario</label><br>
-                            <input type="text" id="nombreUsuario" name="nombre" required value="">
+                            <input type="text" id="nombreUsuario" name="nombre" required value="" placeholder="Nombre">
                         </div>
                         <div class="formText">
-                            <label for="apellidoUsuario">Apellido del usuario</label><br>
-                            <input type="text" id="apellidoUsuario" name="apellido" required value="">
+                            <input type="text" id="apellidoUsuario" name="apellido" required value="" placeholder="Apellido">
                         </div>
                         <div class="formText">
-                            <label for="correoUsuario">Correo institucional</label><br>
-                            <input type="text" id="correoUsuario" name="correo" required value="">
+                            <input type="email" id="correoUsuario" name="correo" required value="" placeholder="Correo Institucional">
                         </div>
         
                         <!-- Creo que esta parte no es necesaria -->
                         <div class="formText">
                             <label for="identidad"></label><br>
-                            <input type="text" id="identidad" name="ids" placeholder="ID">
+                            <input type="text" id="identidad" name="ids" placeholder="ID" required>
                         </div>
                     </div>
                 </div>

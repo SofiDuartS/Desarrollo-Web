@@ -30,7 +30,7 @@ $(document).ready(function () {
                 next: "Siguiente",
                 previous: "Anterior"
             },
-            emptyTable: "No hay actividades disponibles",
+            emptyTable: "No hay datos disponibles",
             zeroRecords: "No se encontraron resultados",
         },
         autoWidth: false, // Evitar estilos automáticos de ancho

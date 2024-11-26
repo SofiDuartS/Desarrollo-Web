@@ -1,42 +1,32 @@
-<%- include('../components/header.ejs', { title: 'UR Deporte y Cultura | Usuarios', excludeMainStyles: true }) -%>
+<%- include('../components/header.ejs',{ title: 'UR Deporte y Cultura | Usuarios', excludeMainStyles: true })  -%>
 <%- include('../components/menuNavegacion.ejs') -%>
 <link rel="stylesheet" href="/css/user2.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
 <body>
     <div id="table-container">
-        <h1>Lista de Usuarios</h1>
+        <h1>Lista de Integrantes</h1>
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Correo</th>
-                    <th># Documento</th>
                     <th>Estado</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <% usuarios.forEach(usuario => { %>
-                    <% if (!usuario.isAdmin) { %>
+                <% grupo.integrantes.forEach(integrante => { %>
+                    <% if (!integrante.isAdmin) { %>
                         <tr>
+                            <td><%= integrante.nombre %></td>
+                            <td><%= integrante.apellido %></td>
+                            <td><%= integrante.correo %></td>
+                            <td><%= integrante.estado ? 'Activo' : 'Inactivo' %></td>
                             <td>
-                                <% if (usuario.imagen) { %>
-                                    <img src="/<%= usuario.imagen.split('assets/').pop() %>" alt="Foto de perfil" class="user-image">
-                                <% } else { %>
-                                    <img src="/img/avatar2.png" alt="Default Profile Picture" class="user-image">
-                                <% } %>
-                            </td>
-                            <td><%= usuario.nombre %></td>
-                            <td><%= usuario.apellido %></td>
-                            <td><%= usuario.correo %></td>
-                            <td><%= usuario.ids %></td>
-                            <td><%= usuario.estado ? 'Activo' : 'Inactivo' %></td>
-                            <td>
-                                <a href="/usuarios/<%= usuario._id %>" class="button-link">
-                                    <button class="formButton" id="formButtonRojo" type="button">Modificar</button>
-                                </a>
+                                <form action="/grupos/eliminarIntegrante/<%= grupo._id %>/<%= integrante._id %>" method="post">
+                                    <button type="submit" class="formButton" id="formButtonRojo">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     <% } %>
@@ -62,7 +52,7 @@
     <!-- Initialize DataTable -->
     <script>
     $(document).ready(function () {
-        new DataTable('#example', {"order": [[1, "asc"]]});
+        new DataTable('#example');
     });
     </script>
 </body>
