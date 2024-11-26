@@ -5,7 +5,7 @@
 <body>
     <div id="table-container">
         <h1>Lista de Usuarios</h1>
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="responsive-table" style="width:100%">
             <thead>
                 <tr>
                     <th>Foto</th>
@@ -43,7 +43,7 @@
                 <% }) %>
             </tbody>
         </table>
-    </main>
+    </div>
     <footer>
         <%- include('../components/footer.ejs') %>
     </footer>
@@ -63,6 +63,23 @@
     <script>
     $(document).ready(function () {
         new DataTable('#example', {"order": [[1, "asc"]]});
+
+        // Custom JavaScript to handle responsive table
+        function makeTableResponsive() {
+            const table = document.querySelector('.responsive-table');
+            const headers = table.querySelectorAll('th');
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, index) => {
+                    cell.setAttribute('data-label', headers[index].innerText);
+                });
+            });
+        }
+
+        makeTableResponsive();
+        window.addEventListener('resize', makeTableResponsive);
     });
     </script>
 </body>
