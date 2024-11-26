@@ -29,6 +29,19 @@ body {
     color: #565555;
 }
 
+.mensajeIntegrantes {
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    /* font-weight: bold; /* Hace que el texto sea más grueso */
+    color: #3100A0; /* Cambia el color a rojo (opcional) */
+}
+
+.selectIntegrantes {
+    width: 100%;
+    height: 42px;
+    font-size: 14px; /* Opcional: ajusta el tamaño del texto */
+    padding: 5px;    /* Opcional: agrega un poco de espacio interior */
+}
+
 .mainContainer{ /*.contenidoPrincipal en el otro archivo*/
     display: flex;
     justify-content: center;
