@@ -30,16 +30,20 @@
                         <div class="formText" id="formTextDesplegable">
                             <label for="grupoActividad">Grupo que participa*</label><br>
                             <select id="grupoActividad" name="grupo" required>
-                                <% if(grupo) { %>
-                                    <option value="0">Grupo que participa</option>
-                                    <option value="Natación" <%= grupo === 'Natación' ? 'selected' : '' %>>Natación</option>
-                                    <option value="Ultimate" <%= grupo === 'Ultimate' ? 'selected' : '' %>>Ultimate</option>
-                                    <option value="Rugby" <%= grupo === 'Rugby' ? 'selected' : '' %>>Rugby</option>
-                                    <option value="Teatro" <%= grupo === 'Teatro' ? 'selected' : '' %>>Teatro</option>
-                                    <option value="Ensamble de rock" <%= grupo === 'Ensamble de rock' ? 'selected' : '' %>>Ensamble de rock</option>
-                                    <option value="Danza árabe" <%= grupo === 'Danza árabe' ? 'selected' : '' %>>Danza árabe</option>
+                                <% if(grupos) { %>
+                                    <% if(grupo) { %>
+                                        <option value="0">Grupo que participa</option>
+                                        <% grupos.forEach(grupo => { %>
+                                            <option value="<%= grupo.nombre %>" <%= grupo.nombre === grupo ? 'selected' : '' %>><%= grupo.nombre %></option>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <option value="0" selected>Grupo que participa</option>
+                                        <% grupos.forEach(grupo => { %>
+                                            <option value="<%= grupo.nombre %>"><%= grupo.nombre %></option>
+                                        <% }); %>
+                                    <% } %>
                                 <% } else { %>
-                                    <option selected value="0">Grupo que participa</option>
+                                    <option value="0">Grupo que participa</option>
                                     <option value="Natación">Natación</option>
                                     <option value="Ultimate">Ultimate</option>
                                     <option value="Rugby">Rugby</option>
@@ -47,6 +51,7 @@
                                     <option value="Ensamble de rock">Ensamble de rock</option>
                                     <option value="Danza árabe">Danza árabe</option>
                                 <% } %>
+                                
                             </select>
                         </div>
                         <div class="formText" id="formFecha">

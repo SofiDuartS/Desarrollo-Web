@@ -1,4 +1,5 @@
 import { ActivityModel } from "../models/activityModel.js";
+import { groupModel } from "../models/groupModel.js";
 import fs from 'fs';
 import multer from 'multer';
 import path from 'path';
@@ -18,6 +19,7 @@ export const crearActividad = async (req, res) => {
     upload(req, res, async function(err) {
         if (err) {
             console.log(err.message);
+            const grupos = await groupModel.find();
             return res.render('Actividades/crearActividad', {
                 nombre: req.body.nombre || "",
                 grupo: req.body.grupo || "",
@@ -26,10 +28,12 @@ export const crearActividad = async (req, res) => {
                 resultado: req.body.resultado || "",
                 imagen: null,
                 mensajeAlerta: err.message,
+                grupos: grupos,
             });
         } else{
             if (!req.body.nombre || !req.body.grupo || req.body.grupo === "0" || !req.body.fecha) {
                 const mensajeAlerta = "Por favor, completa todos los campos obligatorios, marcados con *.";
+                const grupos = await groupModel.find();
                 return res.render("Actividades/crearActividad", {
                     nombre: req.body.nombre || "",
                     grupo: req.body.grupo || "",
@@ -37,7 +41,8 @@ export const crearActividad = async (req, res) => {
                     ubicacion: req.body.ubicacion || "",
                     resultado: req.body.resultado || "",
                     imagen: null,
-                    mensajeAlerta,
+                    mensajeAlerta: mensajeAlerta,
+                    grupos: grupos
                 });
             }
             try{
@@ -105,18 +110,22 @@ export const actualizarActividad = async (req, res) => {
     upload(req, res, async function(err) {
         if (err) {
             console.log(err.message);
+            const grupos = await groupModel.find();
             const actividad = await ActivityModel.findById(req.body.idActividad);
             return res.render('Actividades/editarActividad', {
                 actividad: actividad,
                 mensajeAlerta: err.message,
+                grupos: grupos,
             });
         } else{
             const actividad = await ActivityModel.findById(req.body.idActividad);
             if (!req.body.nombre || !req.body.grupo || req.body.grupo === "0" || !req.body.fecha) {
                 const mensajeAlerta = "Por favor, completa todos los campos obligatorios, marcados con *.";
+                const grupos = await groupModel.find();
                 return res.render("Actividades/editarActividad", {
                     actividad: actividad,
-                    mensajeAlerta,
+                    mensajeAlerta: mensajeAlerta,
+                    grupos: grupos
                 });
             }
             try {
@@ -178,15 +187,18 @@ export const habilitarActividad = async (req, res) => {
     }
 }
 
-export const formularioRegistroActividad = (req, res) => {
-    res.render('Actividades/crearActividad', {nombre: null, grupo: null, fecha: null, ubicacion: null, resultado: null, imagen: null, mensajeAlerta: null});
+export const formularioRegistroActividad = async (req, res) => {
+    const grupos = await groupModel.find();
+    console.log(grupos);
+    res.render('Actividades/crearActividad', {nombre: null, grupo: null, fecha: null, ubicacion: null, resultado: null, imagen: null, mensajeAlerta: null, grupos: grupos});
 }
 
 export const formularioActualizarActividad = async (req, res) => {
     try {
         const id = req.params.id;
+        const grupos = await groupModel.find();
         const actividad = await ActivityModel.findById(id);
-        res.render('Actividades/editarActividad', {actividad: actividad, mensajeAlerta: null});
+        res.render('Actividades/editarActividad', {actividad: actividad, mensajeAlerta: null, grupos: grupos});
     } catch (error) {
         // res.status(400).json({mensaje: error.message});
         console.log(error);

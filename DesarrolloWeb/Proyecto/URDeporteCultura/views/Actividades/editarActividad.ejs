@@ -27,49 +27,26 @@
                         <div class="formText" id="formTextDesplegable">
                             <label for="grupoActividad">Grupo que participa</label><br>
                             <select id="grupoActividad" name="grupo" required>
-                                <option value="0">Grupo que participa</option>
-                                <% if(actividad.grupo == "Natación") {%>
-                                    <option selected value="Natación">Natación</option>
-                                    <option value="Ultimate">Ultimate</option>
-                                    <option value="Rugby">Rugby</option>
-                                    <option value="Teatro">Teatro</option>
-                                    <option value="Ensamble de rock">Ensamble de rock</option>
-                                    <option value="Danza árabe">Danza árabe</option>
-                                <% }else if(actividad.grupo == "Ultimate") {%>
-                                    <option value="Natación">Natación</option>
-                                    <option selected value="Ultimate">Ultimate</option>
-                                    <option value="Rugby">Rugby</option>
-                                    <option value="Teatro">Teatro</option>
-                                    <option value="Ensamble de rock">Ensamble de rock</option>
-                                    <option value="Danza árabe">Danza árabe</option>
-                                <% }else if(actividad.grupo == "Rugby") {%>
-                                    <option value="Natación">Natación</option>
-                                    <option value="Ultimate">Ultimate</option>
-                                    <option selected value="Rugby">Rugby</option>
-                                    <option value="Teatro">Teatro</option>
-                                    <option value="Ensamble de rock">Ensamble de rock</option>
-                                    <option value="Danza árabe">Danza árabe</option>
-                                <% }else if(actividad.grupo == "Teatro") {%>
-                                    <option value="Natación">Natación</option>
-                                    <option value="Ultimate">Ultimate</option>
-                                    <option value="Rugby">Rugby</option>
-                                    <option selected value="Teatro">Teatro</option>
-                                    <option value="Ensamble de rock">Ensamble de rock</option>
-                                    <option value="Danza árabe">Danza árabe</option>
-                                <% }else if(actividad.grupo == "Ensamble de rock") {%>
-                                    <option value="Natación">Natación</option>
-                                    <option value="Ultimate">Ultimate</option>
-                                    <option value="Rugby">Rugby</option>
-                                    <option value="Teatro">Teatro</option>
-                                    <option selected value="Ensamble de rock">Ensamble de rock</option>
-                                    <option value="Danza árabe">Danza árabe</option>
-                                <% }else if(actividad.grupo == "Danza árabe") {%>
+                                <% if(grupos) { %>
+                                    <% if(actividad.grupo) { %>
+                                        <option value="0">Grupo que participa</option>
+                                        <% grupos.forEach(grupo => { %>
+                                            <option value="<%= grupo.nombre %>" <%= grupo.nombre === actividad.grupo ? 'selected' : '' %>><%= grupo.nombre %></option>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <option value="0" selected>Grupo que participa</option>
+                                        <% grupos.forEach(grupo => { %>
+                                            <option value="<%= grupo.nombre %>"><%= grupo.nombre %></option>
+                                        <% }); %>
+                                    <% } %>
+                                <% } else { %>
+                                    <option value="0">Grupo que participa</option>
                                     <option value="Natación">Natación</option>
                                     <option value="Ultimate">Ultimate</option>
                                     <option value="Rugby">Rugby</option>
                                     <option value="Teatro">Teatro</option>
                                     <option value="Ensamble de rock">Ensamble de rock</option>
-                                    <option selected value="Danza árabe">Danza árabe</option>
+                                    <option value="Danza árabe">Danza árabe</option>
                                 <% } %>
                             </select>
                         </div>
