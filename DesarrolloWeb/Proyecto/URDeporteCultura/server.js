@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import multer from 'multer';
 
 import { connectDB } from "./config/database.js";
+import { consultarGrupos, crearGrupo, obtenerGrupoPorId, actualizarGrupo, inhabilitarGrupo, habilitarGrupo, formularioActualizarGrupo, formularioRegistroGrupo, consultarGruposTitulo, index, integrantes, eliminarIntegrante } from "./controllers/groupController.js";
 import { consultarActividades, crearActividad, obtenerActividadPorId, actualizarActividad, inhabilitarActividad, habilitarActividad, formularioActualizarActividad, formularioRegistroActividad, consultarActividadesTitulo, subirImagen} from "./controllers/activityController.js";
 import * as userController from "./controllers/userController.js";
 
@@ -88,6 +89,20 @@ server.get('/usuarios/crear', userController.renderCrearUsuario);
 server.get('/usuarios/:id', userController.obtenerUsuario);
 server.post('/usuarios/actualizar', userController.actualizarUsuario);
 server.get('/usuarios', userController.getUsuarios);
+
+server.get('/grupos', consultarGrupos);
+server.post('/grupos/eliminarintegrante/:idgrupo/:idintegrante', eliminarIntegrante)
+server.get('/grupos/verIntegrantes/:id', integrantes);
+server.post('/grupos/crear', crearGrupo);
+server.get('/grupos/crear', formularioRegistroGrupo);
+server.get('/grupos/grupo/:id', obtenerGrupoPorId);
+server.post('/grupos/actualizar', actualizarGrupo);
+server.get('/grupos/actualizar/:id', formularioActualizarGrupo);
+server.post('/grupos/inhabilitar/:id', inhabilitarGrupo);
+server.post('/grupos/habilitar/:id', habilitarGrupo);
+server.get('/grupos/:titulo', consultarGruposTitulo);
+
+server.get('/index', index);
 
 // Logout route
 server.get('/logout', userController.logout);
