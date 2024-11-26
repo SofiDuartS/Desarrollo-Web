@@ -10,7 +10,7 @@ Tener Docker instalado o descargarlo e instalarlo desde [Docker](https://www.doc
 
 1. **Construir la imagen de Docker**:
 
-   Navegar al directorio `URDeporteCultura` y ejecuta los siguientes comandos:
+   Navegar al directorio `URDeporteCultura` y ejecutar los siguientes comandos:
 
    ```bash
    docker-compose build
@@ -19,3 +19,12 @@ Tener Docker instalado o descargarlo e instalarlo desde [Docker](https://www.doc
 
 2. **Acceder a la app**:
     Desde el navegador ir a `http://localhost:3000/`
+
+### 
+
+**Para correr sin `Docker`**
+
+- Navegar al directorio `URDeporteCultura` 
+- Instalar dependencias `npm install`
+- Ejecutar la app `npm start`
+- Acceder `http://localhost:3000/`
