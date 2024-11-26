@@ -22,14 +22,13 @@
                         <div class="formText">
                             <label for="integrantesGrupo">Integrantes</label><br>
                             <ul id="integrantesGrupo">
-                                <% grupo.integrantes.slice(0, 3).forEach(integrante => { %> <!-- Mostrar solo 3 -->
-                                    <li><%= integrante.nombre %></li>
-                                <% }) %>
-                                <% if (grupo.integrantes.length > 3) { %> <!-- Enlace si hay más integrantes -->
-                                    <li>
+                                <% if (grupo.integrantes.length > 0) { %> <!-- Enlace si hay más integrantes -->
+                                    <li class="mensajeIntegrantes">
                                         <a href="/grupos/verIntegrantes/<%= grupo._id %>" class="verMas">Ver todos los integrantes...</a>
                                     </li>
-                                <% } %>
+                                <% } else { %>
+                                    <li class="mensajeIntegrantes">No hay integrantes en este grupo.</li>
+                                <% } %> 
                             </ul>
                         </div>
                     </div>
