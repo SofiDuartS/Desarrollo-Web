@@ -9,7 +9,13 @@
             <% }%>
             <form action="/grupos/actualizar/<%= grupo._id %>">
                 <div class="formContent">
-                    <div class="formImagen" id="formImagenLleno"></div>
+                    <div class="formImagen">
+                        <% if (grupo.imagen) { %>
+                            <img src="<%= grupo.imagen %>" alt="Imagen del grupo" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                        <% } else { %>
+                            <p style="text-align: center; color: gray;">No hay imagen disponible para este grupo.</p>
+                        <% } %>
+                    </div>
                     <div class="formCampos">
                         <div class="formText" id="formFecha">
                             <label for="diaPractica">Dia de la practica</label><br>
