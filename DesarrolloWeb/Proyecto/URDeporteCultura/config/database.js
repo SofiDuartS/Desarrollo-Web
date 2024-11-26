@@ -2,9 +2,11 @@ import { connect } from 'mongoose';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/userModel.js'; // Ensure the path is correct
 
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/ur_deporte_cultura';
+
 async function connectDB() {
     try {
-        const respDB = await connect("mongodb://localhost:27017/ur_deporte_cultura");
+        const respDB = await connect(mongoUrl);
         console.log('Base de datos conectada');
 
         // Check if admin user exists
