@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Usuario</title>
+</head>
+<body>
+    <form action="/users/update" method="post">
+        <h2>Actualizar Usuario</h2>
+        <input type="hidden" name="idUsuario" value="<%= usuario._id %>">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="name" value="<%= usuario.name %>">
+        <label for="lastname">Apellido</label>
+        <input type="text" name="lastname" value="<%= usuario.lastname %>">
+        <label for="email">Correo</label>
+        <input type="email" name="email" value="<%= usuario.email %>">
+        <label for="role">Rol</label>
+        <select name="role">
+            <% if(usuario.role == "admin") {%>
+                <option selected value="admin">Administrador</option>
+                <option value="user">Usuario</option>
+            <% }else if (usuario.role == "user") {%>
+                <option value="admin">Administrador</option>
+                <option selected value="user">Usuario</option>
+            <% } %>
+        </select>
+        <button type="submit">Guardar cambios</button>
+    </form>
+</body>
+</html>
